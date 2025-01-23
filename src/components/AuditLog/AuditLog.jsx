@@ -1,10 +1,10 @@
-import styles from './Content.module.css'
+import styles from './AuditLog.module.css'
 import Post from '../Post/Post'
 import Layout from '../Layout/Layout'
 
-export default function Content() {
+export default function AuditLog() {
   return (
-    <Layout className={styles.content}>
+    <Layout className={styles.auditLog} bannerSize="mini">
       <Post />
       <Post />
       <Post />

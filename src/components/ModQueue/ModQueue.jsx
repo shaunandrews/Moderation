@@ -1,10 +1,10 @@
-import styles from './Content.module.css'
+import styles from './ModQueue.module.css'
 import Post from '../Post/Post'
 import Layout from '../Layout/Layout'
 
-export default function Content() {
+export default function ModQueue() {
   return (
-    <Layout className={styles.content}>
+    <Layout className={styles.modQueue} bannerSize="mini">
       <Post />
       <Post />
       <Post />

@@ -2,7 +2,5 @@
   background-color: var(--color-content);
   color: var(--color-content-fg);
   border-radius: 8px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   max-width: 540px;
 }
