@@ -6,6 +6,7 @@ COLOR SYSTEM
 - Never use raw hex codes or RGB values
 - Follow the established pattern of using --color-chrome variables for UI chrome elements and --color-content variables for content areas
 - Check colors.css for the complete set of available color variables and their intended usage
+- Avoid making up or using any CSS variables without checking colors.css first.
 - Add new colors variables if needed, and be sure to note the new color in your output.
 
 TYPOGRAPHY
@@ -13,7 +14,8 @@ TYPOGRAPHY
 - Reference src/typography.css for all typography-related variables
 - Use the established font size, weight, and line height variables defined in typography.css
 - Follow the existing font family configuration
-- Do not introduce new typography values without checking typography.css first
+- Do not introduce new typography values without checking typography.css first.
+- Avoid making up or using any CSS variables without checking typography.css first.
 
 COMPONENT STRUCTURE
 

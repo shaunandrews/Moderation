@@ -17,3 +17,18 @@
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
+
+.topBarBreadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-xl);
+}
+
+.topBarBreadcrumbsSeparator {
+  color: var(--color-chrome-fg-tertiary);
+}
+
+.topBarBreadcrumbsItem {
+  color: var(--color-chrome-fg-secondary);
+}

@@ -1,0 +1,10 @@
+.auditLogList {
+    width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background-color: var(--color-content);
+  color: var(--color-content-fg);
+  border-radius: 8px;
+}

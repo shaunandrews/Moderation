@@ -6,6 +6,7 @@ import TopBar from './components/TopBar/TopBar'
 import Content from './components/Content/Content'
 import ModQueue from './components/ModQueue/ModQueue'
 import AuditLog from './components/AuditLog/AuditLog'
+import AuditLogDetails from './components/AuditLogDetails/AuditLogDetails'
 import ModerationSidebar from './components/ModerationSidebar/ModerationSidebar'
 
 // Create a context for moderation state
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Content />} />
             <Route path="/mod-queue" element={<ModQueue />} />
             <Route path="/audit-log" element={<AuditLog />} />
+            <Route path="/audit-log/:id" element={<AuditLogDetails />} />
           </Routes>
           <ModerationSidebar 
             isOpen={moderationOpen}
