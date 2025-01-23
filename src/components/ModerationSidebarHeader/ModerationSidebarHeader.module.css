@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 20px;
+  border-bottom: 1px solid var(--color-content-tint-light);
+  background: var(--color-content);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.closeButton,
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-chrome-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.closeButton:hover,
+.backButton:hover {
+  background-color: var(--color-chrome-hover);
+}
+
+.closeButton:active,
+.backButton:active {
+  background-color: var(--color-chrome-active);
+}

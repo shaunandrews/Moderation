@@ -1,0 +1,74 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.field {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  background: var(--color-content-tint-light);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-content-fg);
+  transition: all 0.2s ease;
+  resize: vertical;
+}
+
+.field::placeholder {
+  color: var(--color-content-fg-tertiary);
+  transition: color 0.2s ease;
+}
+
+/* States */
+.field:hover {
+  background: var(--color-content-tint-hover);
+}
+
+.field:focus {
+  outline: none;
+  background: var(--color-content);
+  border-color: var(--color-accent);
+}
+
+.field:focus::placeholder {
+  color: var(--color-content-fg-secondary);
+}
+
+/* Icon support */
+.hasIcon {
+  padding-left: 48px;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-content-fg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Textarea specific styles */
+textarea.field {
+  min-height: 96px;
+  max-height: 256px;
+}
+
+/* Empty vs filled states */
+.hasContent {
+  background: var(--color-content-tint-light);
+}
+
+/* Disabled state */
+.field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--color-content-tint-light);
+}

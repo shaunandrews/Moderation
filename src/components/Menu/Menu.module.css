@@ -1,0 +1,40 @@
+.menu {
+  min-width: 240px;
+  background: var(--color-content);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  text-align: left;
+  color: var(--color-content-fg);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menuItem:hover {
+  background-color: var(--color-content-border);
+}
+
+.menuItem.danger {
+  color: #ff492f;
+}
+
+.menuItem.danger:hover {
+  background-color: rgba(255, 73, 47, 0.1);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-content-border);
+  margin: 8px 0;
+}

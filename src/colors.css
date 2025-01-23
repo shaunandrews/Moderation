@@ -1,0 +1,50 @@
+:root {
+  /* Chrome Colors */
+  --color-chrome: #001935;
+  --color-chrome-tint-dark: rgba(0, 25, 53, 0.85);
+  --color-chrome-tint-light: rgba(0, 25, 53, 0.15);
+  --color-chrome-tint-hover: rgba(0, 25, 53, 0.2);
+  
+  --color-chrome-fg: #ffffff;
+  --color-chrome-fg-secondary: #99a3ae;
+  --color-chrome-fg-tertiary: #667586;
+  --color-chrome-border: #1a3049;
+
+  --color-chrome-panel: #0D243F;
+  --color-chrome-panel-border: rgba(255, 255, 255, 0.05);
+
+  /* Content Colors */
+  --color-content: #ffffff;
+  --color-content-tint-dark: rgba(0, 0, 0, 0.85);
+  --color-content-tint-light: rgba(0, 0, 0, 0.075);
+  --color-content-tint-hover: rgba(0, 0, 0, 0.1);
+  --color-content-fg: #000000;
+  --color-content-fg-secondary: #667586;
+  --color-content-fg-tertiary: #99a3ae;
+  --color-content-border: #e0e0e0;
+
+  /* Accent Colors */
+  --color-accent: #00b8ff;
+  --color-accent-tint: #ccf1ff;
+  --color-danger: #FF4930;
+  --color-danger-tint: #FFE5E0;
+
+  /* Button Colors */
+  --color-button-primary-bg: #001935;
+  --color-button-primary-fg: #ffffff;
+  --color-button-primary-hover: #1a3049;
+
+  --color-button-secondary-bg: var(--color-content-tint-light);
+  --color-button-secondary-fg: var(--color-content-fg);
+  --color-button-secondary-hover: var(--color-content-tint-hover);
+
+  --color-button-danger-bg: var(--color-danger);
+  --color-button-danger-fg: #ffffff;
+  --color-button-danger-hover: #e5311a;
+
+  --color-button-text-fg: var(--color-content-fg);
+  --color-button-text-hover: var(--color-content-tint-hover);
+
+  color: var(--color-chrome-fg);
+  background-color: var(--color-chrome);
+}

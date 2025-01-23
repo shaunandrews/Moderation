@@ -1,0 +1,20 @@
+.chip {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--color-content-tint-light);
+  border: 1px solid transparent;
+  font-size: var(--font-size-sm);
+  color: var(--color-content-fg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background: var(--color-content-tint-hover);
+}
+
+.chip.selected {
+  background: var(--color-accent-tint);
+  border-color: var(--color-accent);
+}

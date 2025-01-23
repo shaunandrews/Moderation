@@ -1,0 +1,46 @@
+When suggesting or writing code for this project, follow these guidelines:
+
+COLOR SYSTEM
+
+- Reference src/colors.css for all color variables
+- Never use raw hex codes or RGB values
+- Follow the established pattern of using --color-chrome variables for UI chrome elements and --color-content variables for content areas
+- Check colors.css for the complete set of available color variables and their intended usage
+- Add new colors variables if needed, and be sure to note the new color in your output.
+
+TYPOGRAPHY
+
+- Reference src/typography.css for all typography-related variables
+- Use the established font size, weight, and line height variables defined in typography.css
+- Follow the existing font family configuration
+- Do not introduce new typography values without checking typography.css first
+
+COMPONENT STRUCTURE
+
+- Components should be in their own directory under src/components
+- Use PascalCase for component names
+- Each component should have:
+  - ComponentName.jsx
+  - ComponentName.module.css
+- Use CSS Modules for styling
+- Import styles as: import styles from './ComponentName.module.css'
+- Review existing components for patterns and best practices
+- Only change code if you're sure you need to
+
+CSS PRACTICES
+
+- Reference existing component CSS files for structural patterns
+- Follow the layout patterns established in App.module.css for page structure
+- Match the spacing and layout patterns found in existing component CSS modules
+- When creating new styles, check similar existing components for consistent patterns
+
+IMPORTS
+
+- Core CSS files should be imported in main.jsx only
+- Component CSS modules should only be imported in their respective components
+
+ACCESSIBILITY
+
+- Maintain semantic HTML structure
+- Follow heading hierarchy patterns found in existing components
+- Ensure proper contrast by using the color system variables appropriately

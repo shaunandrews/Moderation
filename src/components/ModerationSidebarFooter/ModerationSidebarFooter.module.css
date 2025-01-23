@@ -1,0 +1,33 @@
+.footer {
+  padding: 16px;
+  border-top: 1px solid var(--color-content-tint-light);
+  background: var(--color-content);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 24px;
+  background: var(--color-content-tint);
+  color: var(--color-content-fg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.removeButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 24px;
+  background: var(--color-destructive);
+  color: var(--color-content-inverted);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}

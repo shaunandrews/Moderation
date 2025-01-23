@@ -1,0 +1,43 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  background-color: var(--color-chrome-tint-dark);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  will-change: opacity;
+}
+
+.sidebar {
+  width: 560px;
+  height: 100%;
+  background-color: var(--color-content);
+  color: var(--color-content-fg);
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This ensures ModerationSidebarContent has proper positioning context */
+:global(.moderation-sidebar-content) {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.viewContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  will-change: transform, opacity;
+  overflow-y: auto;
+}

@@ -1,0 +1,100 @@
+.view {
+  padding: 20px;
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-content-fg-secondary);
+  margin: 0 0 16px 0;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guidelines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.guidelineButton {
+  padding: 12px;
+  border: 1px solid var(--color-content-tint-light);
+  border-radius: 8px;
+  background: transparent;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-content-fg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guidelineButton:hover {
+  background: var(--color-content-tint-light);
+}
+
+.guidelineButton.selected {
+  background: var(--color-content-tint-light);
+  border-color: var(--color-content-fg);
+}
+
+.messageSection {
+  margin-top: 24px;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.messageLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-content-fg);
+  margin: 0;
+}
+
+.messageHint {
+  font-size: var(--font-size-sm);
+  color: var(--color-content-fg-secondary);
+  margin: 0;
+}
+
+.characterCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-content-fg-tertiary);
+  margin-left: 8px;
+}
+
+.messageInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-content-tint-light);
+  border-radius: 8px;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--color-content-fg);
+  resize: vertical;
+  margin-bottom: 4px;
+}
+
+.messageInput:focus {
+  outline: none;
+  border-color: var(--color-content-fg);
+}
+
+.error {
+  color: var(--color-button-danger-bg);
+  font-size: var(--font-size-base);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
