@@ -40,9 +40,14 @@ export default function AuditLogDetails() {
                 <div className={styles.moderatorAuthorMessage}>This content isn't really bad, but just not something we'd like to encourage within our community. Nudity is a grey area, and I think this corsses the line into pornography. Though, I'll admin our community guidelines should be more specific around nudity.</div>
                 <div className={styles.moderatorMeta}>
                     <Button 
-                        type="secondary"
-                        label="3 reports"
-                        onClick={() => {}}
+                        type="outline"
+                        label="reports"
+                        count={3}
+                        facepileImages={[
+                            'https://placehold.co/20x20',
+                            'https://placehold.co/20x20',
+                            'https://placehold.co/20x20'
+                        ]}
                     />
                     <Button 
                         type="secondary"

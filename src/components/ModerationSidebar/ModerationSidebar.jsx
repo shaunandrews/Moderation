@@ -5,7 +5,6 @@ import ModerationSidebarContent from '../ModerationSidebarContent/ModerationSide
 import ModerationSidebarFooter from '../ModerationSidebarFooter/ModerationSidebarFooter';
 import GroupsView from '../ModerationViews/GroupsView';
 import DetailsView from '../ModerationViews/DetailsView';
-import MessageView from '../ModerationViews/MessageView';
 import styles from './ModerationSidebar.module.css';
 
 const VIEWS = {
@@ -27,10 +26,6 @@ const VIEWS = {
           return 'Select guideline';
       }
     }
-  },
-  message: {
-    component: MessageView,
-    title: 'Remove post'
   }
 };
 

@@ -18,14 +18,16 @@ const ModerationSidebarHeader = ({ onClose, onBack, title = 'Moderate post' }) =
   return (
     <div className={styles.header}>
       <div className={styles.left}>
-        {onBack && (
-          <Button 
-            type="icon"
-            icon={<BackIcon />}
-            onClick={onBack}
-            aria-label="Go back"
-          />
-        )}
+        <div className={`${styles.backButtonContainer} ${onBack ? styles.visible : ''}`}>
+          {onBack && (
+            <Button 
+              type="icon"
+              icon={<BackIcon />}
+              onClick={onBack}
+              aria-label="Go back"
+            />
+          )}
+        </div>
         <h1 className={styles.heading}>{title}</h1>
       </div>
       <Button 

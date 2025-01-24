@@ -5,7 +5,7 @@
   padding: 8px 16px;
   border: none;
   border-radius: 24px;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -75,7 +75,50 @@
   color: currentColor;
 }
 
-.label {
+label {
   line-height: var(--line-height-tight);
   color: currentColor;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+/* Outline Button */
+.outline {
+  background: transparent;
+  border: 1px solid var(--color-content-border);
+  gap: 4px;
+  padding: 5.5px 16px;
+}
+
+.outline label {
+  color: var(--color-content-fg-secondary);
+}
+
+.outline .count {
+  color: var(--color-content-fg);
+  font-weight: var(--font-weight-bold);
+}
+
+.outline:not(.disabled):hover {
+  border-color: var(--color-content-tint-dark);
+}
+
+.facepile {
+  display: flex;
+}
+
+.facepile img {
+  width: 24px;
+  height: 24px;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.count {
+  color: var(--color-content-secondary);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
 }

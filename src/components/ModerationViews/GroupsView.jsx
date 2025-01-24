@@ -28,7 +28,7 @@ const GroupsView = ({ onNavigate, showError }) => {
 
   return (
     <div className={styles.view}>
-      <h2 className={styles.subtitle}>Reason for removing</h2>
+      <h2 className={styles.subtitle}>Select a reason</h2>
       {showError && (
         <p className={styles.error}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
