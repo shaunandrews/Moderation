@@ -59,7 +59,7 @@
 /* Icon Button */
 .icon {
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 40px;
   background: transparent;
   color: var(--color-content-fg);
 }

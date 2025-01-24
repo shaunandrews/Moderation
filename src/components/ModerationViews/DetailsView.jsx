@@ -125,30 +125,6 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
       id: 9,
       text: 'Protect personal information - no doxxing or sharing private details.'
     },
-    {
-      id: 10,
-      text: 'Follow platform-wide content policies and terms of service.'
-    },
-    {
-      id: 11,
-      text: 'No impersonation of other users or public figures.'
-    },
-    {
-      id: 12,
-      text: 'Keep content relevant to the community topic.'
-    },
-    {
-      id: 13,
-      text: 'No trolling or intentionally disruptive behavior.'
-    },
-    {
-      id: 14,
-      text: 'Respect moderator decisions and appeal through appropriate channels.'
-    },
-    {
-      id: 15,
-      text: 'No harassment or targeted attacks against other users.'
-    }
   ];
 
   // Show appropriate options based on the selected group
