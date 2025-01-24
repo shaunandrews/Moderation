@@ -5,10 +5,12 @@ import Menu, { MenuItem, MenuDivider } from '../Menu/Menu'
 import { useContext, useRef, useState } from 'react'
 import { ModerationContext } from '../../App'
 import OverflowIcon from '../icons/OverflowIcon'
+import ChevronDownIcon from '../icons/ChevronDownIcon'
 
 export default function ModQueueReview() {
   const { setModerationOpen } = useContext(ModerationContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const buttonRef = useRef(null);
 
   const handleModerate = () => {
@@ -36,19 +38,19 @@ export default function ModQueueReview() {
   };
 
   return (
-    <div className={styles.modQueueReview}>
-      <div className={styles.reviewHeader}>
+      <div className={styles.modQueueReview}>
+      <div className={styles.actions}>
         <Button 
             type="outline"
             label="reports"
             count={3}
             facepileImages={[
-                'https://placehold.co/20x20',
-                'https://placehold.co/20x20',
-                'https://placehold.co/20x20'
+                'https://loremflickr.com/20/20',
+                'https://loremflickr.com/20/20/dog',
+                'https://loremflickr.com/20/20/nature'
             ]}
         />
-        <div className={styles.reviewHeaderActions}>
+        <div className={styles.actionsPrimary}>
             <Button
                 type="icon"
                 icon={<OverflowIcon />}
@@ -72,16 +74,26 @@ export default function ModQueueReview() {
                 onClick={handleModerate}
             />
         </div>
-      </div>
-      <div className={styles.reviewReasons}>
-        <div className={styles.reviewReason}>Against community guidelines</div>
-        <div className={styles.reviewReason}>Off topic</div>
-        <div className={styles.reviewReason}>Spam</div>
-      </div>
-      <div className={styles.reviewContent}>
+      </div> 
+      
+        <div className={styles.relevantInfo}>
+          <div className={styles.notice}>
+            <span>Reported as: Against community guidelines, harassment, spam</span>
+          </div>
+          <div className={styles.notice}>
+            <span>User has had 3 posts removed in the last month</span>
+          </div>
+          <div className={styles.notice}>
+            <span><strong>@sarah-mod</strong>: Borderline but not violating guidelines.</span>
+          </div>
+        </div>
+      
+      <div className={styles.reportedContent}>
         <h3>Reported post</h3>
-        <Post />
-      </div>
+        <div className={styles.reportedContentContainer}>
+          <Post initialPreview={true} />
+        </div>
+      </div>         
     </div>
   )
 } 

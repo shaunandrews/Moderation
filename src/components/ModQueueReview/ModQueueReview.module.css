@@ -1,54 +1,55 @@
 .modQueueReview {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   height: 100%;
   background-color: var(--color-content);
   color: var(--color-content-fg);
   width: 540px;
   border-radius: 8px;
+  padding: 16px;
 }
 
-.reviewHeader {
+.actions {
   display: flex;
   gap: 8px;
-  padding: 16px 16px 0 16px;
   justify-content: space-between;
   align-items: center;
 }
 
-.reviewHeaderActions {
+.actionsPrimary {
   display: flex;
   gap: 8px;
 }
 
-.reviewReasons {
-  padding: 16px;
-  display: flex;
-  gap: 8px;
-}
-
-.reviewReason {
-  padding: 2px 4px;
-  border-radius: 4px;
-  background-color: var(--color-content-tint-light);
-  color: var(--color-content-fg);
-  font-size: var(--font-size-xs);
-}
-
-.reviewContent {
-  padding: 16px;
+.reportedContent {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.reviewContent h3 {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-normal);
-    color: var(--color-content-fg-secondary);
+.reportedContent h3 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-content-fg-secondary);
 }
 
-.reviewContent > div {
-    border-radius: 8px;
-    border: 1px solid var(--color-content-border);
+.reportedContentContainer {
+  border: 1px solid var(--color-content-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.relevantInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notice {
+  background: var(--color-content-tint-light);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
 }

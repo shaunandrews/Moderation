@@ -1,0 +1,23 @@
+.footer {
+  padding: 0 16px 16px 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action {
+  min-width: auto;
+}
+
+.actionContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.actionIcon {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}

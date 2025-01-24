@@ -46,3 +46,9 @@ ACCESSIBILITY
 - Maintain semantic HTML structure
 - Follow heading hierarchy patterns found in existing components
 - Ensure proper contrast by using the color system variables appropriately
+
+ICONS
+
+- Use SVG icons for all icons
+- Icons should be in their own directory under src/icons
+- Icon files should be named IconName.jsx
