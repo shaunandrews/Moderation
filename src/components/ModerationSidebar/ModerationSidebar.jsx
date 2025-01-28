@@ -5,6 +5,7 @@ import ModerationSidebarContent from '../ModerationSidebarContent/ModerationSide
 import ModerationSidebarFooter from '../ModerationSidebarFooter/ModerationSidebarFooter';
 import GroupsView from '../ModerationViews/GroupsView';
 import DetailsView from '../ModerationViews/DetailsView';
+import ConfirmationView from '../ModerationViews/ConfirmationView';
 import styles from './ModerationSidebar.module.css';
 
 const VIEWS = {
@@ -26,6 +27,10 @@ const VIEWS = {
           return 'Select guideline';
       }
     }
+  },
+  confirmation: {
+    component: ConfirmationView,
+    title: 'Post removed'
   }
 };
 
@@ -37,6 +42,21 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
   const [direction, setDirection] = useState(0);
   const [selectedReason, setSelectedReason] = useState(null);
   const [showError, setShowError] = useState(false);
+
+  const resetState = () => {
+    setCurrentView('groups');
+    setViewStack(['groups']);
+    setViewData({});
+    setDirection(0);
+    setSelectedReason(null);
+    setShowError(false);
+  };
+
+  const handleClose = () => {
+    onClose();
+    // Wait for the closing animation to finish before resetting state
+    setTimeout(resetState, 300);
+  };
 
   const springs = useSpring({
     transform: isOpen ? 'translateX(0%)' : 'translateX(100%)',
@@ -118,16 +138,23 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
         setShowError(true);
         return;
       }
+
+      // Navigate to confirmation view with all the collected data
+      handleNavigateForward('confirmation', {
+        groupId: viewData.details.groupId,
+        selectedReason,
+        authorMessage: viewData.details.authorMessage,
+        moderatorNote: viewData.details.moderatorNote,
+        escalateToStaff: viewData.details.escalateToStaff
+      });
     }
-    
-    // Handle actual removal logic here
   };
 
   if (!isRendered) return null;
 
   const handleScrimClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      handleClose();
     }
   };
 
@@ -148,13 +175,15 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
           transform: springs.transform,
         }}
       >
-        <ModerationSidebarHeader 
-          onClose={onClose} 
-          onBack={canGoBack ? handleNavigateBack : undefined}
-          title={typeof VIEWS[currentView].title === 'function' 
-            ? VIEWS[currentView].title(viewData[currentView] || {})
-            : VIEWS[currentView].title}
-        />
+        {currentView !== 'confirmation' && (
+          <ModerationSidebarHeader 
+            onClose={handleClose} 
+            onBack={canGoBack ? handleNavigateBack : undefined}
+            title={typeof VIEWS[currentView].title === 'function' 
+              ? VIEWS[currentView].title(viewData[currentView] || {})
+              : VIEWS[currentView].title}
+          />
+        )}
         <ModerationSidebarContent>
           {transitions((style, item) => {
             const ViewComponent = VIEWS[item].component;
@@ -164,6 +193,7 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
                   onNavigate={handleNavigateForward}
                   viewData={viewData[item]}
                   onReasonSelect={handleReasonSelect}
+                  onClose={handleClose}
                   showError={showError && (
                     (item === 'groups') || 
                     (item === 'details')
@@ -173,11 +203,13 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
             );
           })}
         </ModerationSidebarContent>
-        <ModerationSidebarFooter 
-          onCancel={onClose} 
-          onRemove={handleRemove}
-          showRemove={true}
-        />
+        {currentView !== 'confirmation' && (
+          <ModerationSidebarFooter 
+            onCancel={handleClose} 
+            onRemove={handleRemove}
+            showRemove={true}
+          />
+        )}
       </animated.div>
     </animated.div>
   );
