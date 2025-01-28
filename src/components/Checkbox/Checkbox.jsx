@@ -4,6 +4,7 @@ import styles from './Checkbox.module.css';
 const Checkbox = ({ 
   checked = false, 
   disabled = false,
+  label,
   onChange,
   ...props 
 }) => {
@@ -24,6 +25,7 @@ const Checkbox = ({
           </svg>
         )}
       </span>
+      {label && <span className={styles.label}>{label}</span>}
     </label>
   );
 };

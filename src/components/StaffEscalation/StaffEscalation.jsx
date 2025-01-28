@@ -15,10 +15,13 @@ const StaffEscalation = ({ required = false, checked = false, onChange }) => {
   }
 
   return (
-    <label className={styles.optionalCheckbox}>
-      <Checkbox checked={checked} onChange={(e) => onChange?.(e.target.checked)} />
-      <span>Escalate this post to Tumblr for review</span>
-    </label>
+    <div className={styles.optionalCheckbox}>
+      <Checkbox 
+        checked={checked} 
+        onChange={(e) => onChange?.(e.target.checked)}
+        label="Escalate this post to Tumblr for review"
+      />
+    </div>
   );
 };
 
