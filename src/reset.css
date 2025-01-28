@@ -24,6 +24,7 @@ button {
   font-size: inherit;
   line-height: inherit;
   border-radius: 0;
+  font-family: inherit;
 }
 
 h1,

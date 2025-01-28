@@ -41,8 +41,8 @@
   --font-size-3xl: 2rem; /* 32px */
 
   /* Font Weights */
-  --font-weight-regular: 300;
-  --font-weight-medium: 400;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 600;
 
   /* Line Heights */

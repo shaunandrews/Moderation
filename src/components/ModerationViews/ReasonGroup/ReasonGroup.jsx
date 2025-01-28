@@ -9,17 +9,15 @@ const ChevronIcon = () => (
 
 const ReasonGroup = ({ title, description, onClick }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
-      <div className={styles.content}>
-        <div className={styles.text}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.description}>{description}</div>
-        </div>
+      <div className={styles.content} onClick={onClick}>
+          <div className={styles.text}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.description}>{description}</div>
+          </div>
         <div className={styles.icon}>
           <ChevronIcon />
         </div>
       </div>
-    </button>
   );
 };
 
