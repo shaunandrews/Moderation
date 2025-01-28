@@ -40,4 +40,36 @@
   bottom: 0;
   will-change: transform, opacity;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .container {
+    padding: 16px;
+  }
+
+  .sidebar {
+    width: 480px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .viewContainer {
+    padding-bottom: env(safe-area-inset-bottom); /* iOS safe area support */
+  }
 }

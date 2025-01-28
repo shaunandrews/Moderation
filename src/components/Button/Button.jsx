@@ -14,6 +14,14 @@ const Button = React.forwardRef(({
 }, ref) => {
   const buttonClass = `${styles.button} ${styles[type]} ${disabled ? styles.disabled : ''}`;
 
+  const renderIcon = () => {
+    if (!icon) return null;
+    if (typeof icon === 'string') {
+      return <span className={styles.emojiIcon}>{icon}</span>;
+    }
+    return icon;
+  };
+
   const renderFacepile = () => {
     if (!facepileImages.length) return null;
     return (
@@ -33,7 +41,7 @@ const Button = React.forwardRef(({
       disabled={disabled}
       aria-label={ariaLabel}
     >
-      {icon}
+      {renderIcon()}
       {renderFacepile()}
       <label>
         {count !== undefined && <span className={styles.count}>{count}</span>}
@@ -48,7 +56,7 @@ Button.displayName = 'Button';
 Button.propTypes = {
   type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'text', 'icon', 'outline']),
   label: PropTypes.string,
-  icon: PropTypes.element,
+  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   'aria-label': PropTypes.string,

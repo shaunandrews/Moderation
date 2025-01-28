@@ -7,22 +7,33 @@ import Button from '../Button/Button';
 
 const Post = ({ initialPreview = false }) => {
   const [isPreview, setIsPreview] = useState(initialPreview);
+  const [isFullPostOpen, setIsFullPostOpen] = useState(false);
+
+  if (!isPreview) {
+    return (
+      <div className={styles.post}>
+        <PostHeader />
+        <div className={styles.postContent}>
+          <PostContent />
+        </div>
+        <PostFooter />
+      </div>
+    );
+  }
 
   return (
-    <div className={`${styles.post} ${isPreview ? styles.preview : ''}`}>
-      <PostHeader hideOverflow={isPreview} />
+    <div className={`${styles.post} ${!isFullPostOpen ? styles.preview : ''}`}>
+      <div className={styles.previewHeader}>
+        <Button
+          type="secondary"
+          label={isFullPostOpen ? "Hide full post" : "Show full post"}
+          onClick={() => setIsFullPostOpen(!isFullPostOpen)}
+        />
+      </div>
+      <PostHeader hideOverflow={!isFullPostOpen} />
       <div className={styles.postContent}>
         <PostContent />
       </div>
-      {isPreview && (
-        <div className={styles.showFullPostWrapper}>
-          <Button 
-            type="primary"
-            label="Show full post"
-            onClick={() => setIsPreview(false)}
-          />
-        </div>
-      )}
       <PostFooter />
     </div>
   );
