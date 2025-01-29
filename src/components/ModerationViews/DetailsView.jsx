@@ -7,6 +7,18 @@ import CheckboxChipGroup from '../CheckboxChipGroup/CheckboxChipGroup';
 import GuidelineList from '../GuidelineList/GuidelineList';
 import GuidelineListItem from '../GuidelineList/GuidelineListItem';
 import StaffEscalation from '../StaffEscalation/StaffEscalation';
+import FormHeader from '../FormHeader/FormHeader';
+
+// Add these color constants at the top of the file
+const GUIDELINE_COLORS = [
+  '#00B0FF', // light blue
+  '#8B5CF6', // purple
+  '#FF69B4', // pink
+  '#FF4444', // red
+  '#FF9500', // orange
+  '#FFD600', // yellow
+  '#00C853'  // green
+];
 
 const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
   const [selectedReason, setSelectedReason] = useState(null);
@@ -166,13 +178,17 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
               You must select at least one guideline
             </p>
           )}
-          <GuidelineList value={selectedGuidelines} onChange={handleGuidelinesChange}>
+          <GuidelineList 
+            value={selectedGuidelines} 
+            onChange={handleGuidelinesChange}
+          >
             {options.map((option, index) => (
               <GuidelineListItem
                 key={option.id}
                 value={option.id}
                 label={option.text}
                 number={index + 1}
+                color={GUIDELINE_COLORS[index % GUIDELINE_COLORS.length]}
               />
             ))}
           </GuidelineList>
@@ -209,13 +225,13 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
       {renderOptions()}
 
       <div className={styles.messageSection}>
-        <h3 className={styles.messageLabel}>Author message</h3>
-        <div className={styles.messageHeader}>
-          <p className={styles.messageHint}>Shared with the author to explain why their post was removed.</p>
-          <span className={styles.characterCount}>{authorMessage.length}/300</span>
-        </div>
+        <FormHeader
+          label="Author message"
+          hint="Shared with the author to explain why their post was removed."
+          characterCount={authorMessage.length}
+          maxCharacters={300}
+        />
         <TextField 
-          multiline
           placeholder="Your post was removed because..."
           value={authorMessage}
           onChange={(e) => setAuthorMessage(e.target.value)}
@@ -223,11 +239,12 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
       </div>
 
       <div className={styles.messageSection}>
-        <h3 className={styles.messageLabel}>Moderator note</h3>
-        <div className={styles.messageHeader}>
-          <p className={styles.messageHint}>Private notes for other moderators. This is not visible to the author.</p>
-          <span className={styles.characterCount}>{moderatorNote.length}/300</span>
-        </div>
+        <FormHeader
+          label="Moderator note"
+          hint="Private notes for other moderators. This is not visible to the author."
+          characterCount={moderatorNote.length}
+          maxCharacters={300}
+        />
         <TextField 
           icon={<LockIcon />}
           placeholder="Here's some private context and notes..."

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReasonGroup from './ReasonGroup/ReasonGroup';
 import styles from './Views.module.css';
+import Post from '../Post/Post';
 
 const GroupsView = ({ onNavigate, showError }) => {
   const groups = [
@@ -46,6 +47,13 @@ const GroupsView = ({ onNavigate, showError }) => {
             onClick={() => onNavigate('details', { groupId: group.id })}
           />
         ))}
+      </div>
+
+      <div className={styles.reportedPost}>
+        <h2 className={styles.subtitle}>Reported post</h2>
+        <div className={styles.reportedPostContainer}>
+          <Post />
+        </div>
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ const mockAuditLogs = [
 
 export default function AuditLog() {
   return (
-    <Layout className={styles.auditLog} bannerSize="mini">
+    <Layout className={styles.auditLog}>
       <AuditLogList>
         {mockAuditLogs.map((log, index) => (
           <AuditLogListItem

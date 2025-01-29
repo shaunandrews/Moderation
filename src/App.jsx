@@ -10,18 +10,26 @@ import AuditLogDetails from './components/AuditLogDetails/AuditLogDetails'
 import ModerationSidebar from './components/ModerationSidebar/ModerationSidebar'
 
 // Create a context for moderation state
-export const ModerationContext = createContext({
-  moderationOpen: false,
-  setModerationOpen: () => {},
-});
+export const ModerationContext = createContext();
 
-function App() {
+export default function App() {
   const [moderationOpen, setModerationOpen] = useState(false);
-  const value = { moderationOpen, setModerationOpen };
+  const [moderationDismissCallback, setModerationDismissCallback] = useState(null);
+
+  const handleModerationClose = () => {
+    setModerationOpen(false);
+    // Reset the callback when moderation is closed without completion
+    setModerationDismissCallback(null);
+  };
 
   return (
     <BrowserRouter>
-      <ModerationContext.Provider value={value}>
+      <ModerationContext.Provider value={{
+        moderationOpen,
+        setModerationOpen,
+        moderationDismissCallback,
+        setModerationDismissCallback
+      }}>
         <div className={styles.app}>
           <Sidebar />
           <TopBar />
@@ -33,12 +41,10 @@ function App() {
           </Routes>
           <ModerationSidebar 
             isOpen={moderationOpen}
-            onClose={() => setModerationOpen(false)}
+            onClose={handleModerationClose}
           />
         </div>
       </ModerationContext.Provider>
     </BrowserRouter>
   )
 }
-
-export default App

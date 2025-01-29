@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GuidelineListItem.module.css';
 
-const GuidelineListItem = ({ value, label, number, selected, onClick }) => {
+const GuidelineListItem = ({ value, label, number, selected, onClick, color }) => {
   return (
     <button
       className={`${styles.item} ${selected ? styles.selected : ''}`}
@@ -9,8 +9,13 @@ const GuidelineListItem = ({ value, label, number, selected, onClick }) => {
       role="checkbox"
       aria-checked={selected}
     >
-      <div className={styles.number}>{number}</div>
-      <div className={styles.label}>{label}</div>
+      <span 
+        className={styles.number}
+        style={color ? { backgroundColor: color } : undefined}
+      >
+        {number}
+      </span>
+      <span className={styles.label}>{label}</span>
     </button>
   );
 };

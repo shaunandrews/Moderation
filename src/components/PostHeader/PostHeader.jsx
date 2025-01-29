@@ -5,7 +5,12 @@ import Menu, { MenuItem, MenuDivider } from '../Menu/Menu';
 import { ModerationContext } from '../../App';
 import OverflowIcon from '../icons/OverflowIcon';
 
-const PostHeader = ({ hideOverflow = false }) => {
+const PostHeader = ({ 
+  hideOverflow = false,
+  avatar = 'https://assets.tumblr.com/images/default_avatar/cube_closed_64.png',
+  username = 'anonymous-user',
+  timestamp = 'just now'
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { setModerationOpen } = useContext(ModerationContext);
   const buttonRef = useRef(null);
@@ -45,12 +50,12 @@ const PostHeader = ({ hideOverflow = false }) => {
     <div className={styles.header}>
       <div className={styles.userInfo}>
         <div className={styles.avatar}>
-          <img src="https://loremflickr.com/44/44" alt="User avatar" />
+          <img src={avatar} alt={`${username}'s avatar`} />
         </div>
         <div className={styles.details}>
-          <div className={styles.username}>scotty-blog</div>
+          <div className={styles.username}>{username}</div>
           <div className={styles.meta}>
-            <span>3d</span>
+            <span className={styles.metaTime}>{timestamp}</span>
           </div>
         </div>
       </div>

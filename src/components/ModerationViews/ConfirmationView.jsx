@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './Views.module.css';
 import Button from '../Button/Button';
+import { ModerationContext } from '../../App';
 
 const ConfirmationView = ({ viewData, onClose }) => {
+  const { moderationDismissCallback, setModerationDismissCallback } = useContext(ModerationContext);
   const [isBanned, setIsBanned] = useState(false);
 
   const handleBanClick = () => {
@@ -88,12 +90,22 @@ const ConfirmationView = ({ viewData, onClose }) => {
 
   const detailText = getDetailText();
 
+  const handleClose = () => {
+    // Call the dismiss callback if it exists
+    if (moderationDismissCallback) {
+      moderationDismissCallback();
+      // Reset the callback
+      setModerationDismissCallback(null);
+    }
+    onClose();
+  };
+
   return (
     <div className={styles.view}>
       <div className={styles.confirmation}>
         <div className={styles.confirmationHeading}>
           <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 34.5C27.1127 34.5 34.5 27.1127 34.5 18C34.5 8.8873 27.1127 1.5 18 1.5C8.8873 1.5 1.5 8.8873 1.5 18C1.5 27.1127 8.8873 34.5 18 34.5ZM25.1523 14.4603C25.6827 13.8239 25.5967 12.8781 24.9603 12.3477C24.3239 11.8174 23.378 11.9033 22.8477 12.5398L16.3992 20.2779L13.0607 16.9394C12.4749 16.3536 11.5251 16.3536 10.9393 16.9394C10.3536 17.5252 10.3536 18.4749 10.9393 19.0607L15.4393 23.5607C15.7374 23.8587 16.147 24.0176 16.568 23.9985C16.989 23.9794 17.3825 23.7841 17.6523 23.4603L25.1523 14.4603Z" fill="currentColor"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M18 34.5C27.1127 34.5 34.5 27.1127 34.5 18C34.5 8.8873 27.1127 1.5 18 1.5C8.8873 1.5 1.5 8.8873 1.5 18C1.5 27.1127 8.8873 34.5 18 34.5ZM25.1523 14.4603C25.6827 13.8239 25.5967 12.8781 24.9603 12.3477C24.3239 11.8174 23.378 11.9033 22.8477 12.5398L16.3992 20.2779L13.0607 16.9394C12.4749 16.3536 11.5251 16.3536 10.9393 16.9394C10.3536 17.5252 10.3536 18.4749 10.9393 19.0607L15.4393 23.5607C15.7374 23.8587 16.147 24.0176 16.568 23.9985C16.989 23.9794 17.3825 23.7841 17.6523 23.4603L25.1523 14.4603Z" fill="currentColor"/>
           </svg>
           <h2>Post removed</h2>
         </div>
@@ -127,7 +139,7 @@ const ConfirmationView = ({ viewData, onClose }) => {
           <Button
             type={isBanned ? "danger" : "primary"}
             label={isBanned ? "Ban & close" : "Close"}
-            onClick={onClose}
+            onClick={handleClose}
           />
         </div>
       </div>

@@ -10,6 +10,7 @@ const GuidelineList = ({ children, value = [], onChange }) => {
     >
       {React.Children.map(children, child => {
         return React.cloneElement(child, {
+          ...child.props,
           selected: value.includes(child.props.value),
           onClick: () => {
             const newValue = value.includes(child.props.value)

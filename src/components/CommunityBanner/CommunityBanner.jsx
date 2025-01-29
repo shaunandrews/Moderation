@@ -1,14 +1,43 @@
 import styles from './CommunityBanner.module.css'
+import Button from '../Button/Button'
+import GlobeIcon from '../icons/GlobeIcon'
+import OverflowIcon from '../icons/OverflowIcon'
+import Menu, { MenuItem, MenuDivider } from '../Menu/Menu'
+import { useState, useRef } from 'react'
 
 export default function CommunityBanner({ size = 'full' }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const buttonRef = useRef(null);
+
+  const handleCopyLink = () => {
+    // Handle copy link action
+    setMenuOpen(false);
+  };
+
+  const handleMute = () => {
+    // Handle mute action
+    setMenuOpen(false);
+  };
+
+  const handleLeave = () => {
+    // Handle leave action
+    setMenuOpen(false);
+  };
+
+  const handleReport = () => {
+    // Handle report action
+    setMenuOpen(false);
+  };
+
   return (
-      <div className={`${styles.banner} ${size === 'mini' ? styles.mini : ''}`}>
-          <div className={styles.container}>
-            <div className={styles.identity}>
-                <h2 className={styles.title}>Design't</h2>
+    <div className={`${styles.banner} ${size === 'mini' ? styles.mini : ''}`}>
+      <div className={styles.container}>
+        <div className={styles.identity}>
+          <h2 className={styles.title}>Design't</h2>
                 {size !== 'mini' && (
                     <>
                         <p className={styles.description}>tumblr designrs</p>
+
                         <div className={styles.role}>
                             <span className={styles.roleIcon}>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,10 +45,50 @@ export default function CommunityBanner({ size = 'full' }) {
                                 </svg>
                             </span>
                             <span className={styles.roleName}>Admin</span>
-                            <span className={styles.username}>@shaunandrews</span>
+                            <span className={styles.roleUsername}>@shaunandrews</span>
                         </div>
                     </>
                 )}
+            </div>
+
+            <div className={styles.meta}>
+                <div className={styles.metaVisibility}>
+                    <GlobeIcon />
+                    <span>Public</span>
+                </div>
+                <div className={styles.metaOnline}>
+                    <div className={styles.metaOnlineLight} />
+                    <span>1,234 online</span>
+                </div>
+            </div>
+            
+            <div className={styles.actions}>
+                <Button 
+                    type="primary" 
+                    label="Invite" 
+                    onClick={() => {}} 
+                    aria-label="Invite members to community"
+                />
+                
+                <Button 
+                    ref={buttonRef}
+                    type="icon"
+                    icon={<OverflowIcon />}
+                    onClick={() => setMenuOpen(true)}
+                    aria-label="More actions"
+                />
+
+                <Menu
+                    isOpen={menuOpen}
+                    onClose={() => setMenuOpen(false)}
+                    anchorEl={buttonRef.current}
+                >
+                    <MenuItem onClick={handleCopyLink}>Copy link</MenuItem>
+                    <MenuItem onClick={handleMute}>Mute</MenuItem>
+                    <MenuItem onClick={handleLeave}>Leave</MenuItem>
+                    <MenuDivider />
+                    <MenuItem onClick={handleReport} danger>Report</MenuItem>
+                </Menu>
             </div>
         </div>
     </div>

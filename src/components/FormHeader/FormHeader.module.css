@@ -1,0 +1,29 @@
+.container {
+  margin-bottom: 4px;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-content-fg);
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-content-fg-secondary);
+  margin: 0;
+}
+
+.characterCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-content-fg-tertiary);
+  margin-left: 8px;
+} 

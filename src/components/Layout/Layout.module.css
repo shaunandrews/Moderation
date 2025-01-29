@@ -4,7 +4,8 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  height: 100%;
+  min-height: 100%;
+  flex-grow: 1;
 }
 
 .columns {

@@ -1,10 +1,12 @@
 .banner {
+  flex-shrink: 0;
   width: 920px;
   background-color: var(--color-chrome-panel);
   background-image: url("/images/banner.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
+  border-radius: 12px;
+  max-height: 280px;
   height: 280px;
   min-height: 80px;
   position: relative;
@@ -22,8 +24,7 @@
 }
 
 .container {
-  margin: 0.5px;
-  border-radius: 7.5px;
+  border-radius: 12px;
   flex-grow: 1;
   display: flex;
   align-items: flex-end;
@@ -46,7 +47,9 @@
 .role {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+  margin-top: 12px;
+  font-size: var(--font-size-sm);
 }
 
 .roleIcon {
@@ -61,6 +64,72 @@
   font-weight: var(--font-weight-bold);
 }
 
-.username {
+.roleUsername {
   opacity: 0.7;
+  margin-left: 12px;
+}
+
+.meta {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.metaVisibility {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+
+  span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.metaOnline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 32px;
+
+  .metaOnlineLight {
+    width: 9px;
+    height: 9px;
+    background-color: rgb(1, 207, 53);
+    border-top: 1px solid rgba(255,255,255, .2);
+    border-bottom: 1px solid rgba(0,0,0, .1);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(1, 207, 53, 0.2);
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(1, 207, 53, 0);
+  }
+  80% {
+    box-shadow: 0 0 0 4px rgba(1, 207, 53, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 5px rgba(1, 207, 53, 0);
+  }
+}
+
+.actions {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

@@ -5,16 +5,34 @@ import PostContent from '../PostContent/PostContent';
 import PostFooter from '../PostFooter/PostFooter';
 import Button from '../Button/Button';
 
-const Post = ({ initialPreview = false }) => {
+const defaultContent = (
+  <p>This is a placeholder post content. It would normally contain the actual content of the post.</p>
+);
+
+const Post = ({ 
+  initialPreview = false,
+  avatar = 'https://assets.tumblr.com/images/default_avatar/cube_closed_64.png',
+  username = 'anonymous-user',
+  timestamp = 'just now',
+  contentImage,
+  content = defaultContent
+}) => {
   const [isPreview, setIsPreview] = useState(initialPreview);
   const [isFullPostOpen, setIsFullPostOpen] = useState(false);
 
   if (!isPreview) {
     return (
       <div className={styles.post}>
-        <PostHeader />
+        <PostHeader 
+          avatar={avatar}
+          username={username}
+          timestamp={timestamp}
+        />
         <div className={styles.postContent}>
-          <PostContent />
+          <PostContent 
+            contentImage={contentImage}
+            content={content}
+          />
         </div>
         <PostFooter />
       </div>
@@ -30,9 +48,17 @@ const Post = ({ initialPreview = false }) => {
           onClick={() => setIsFullPostOpen(!isFullPostOpen)}
         />
       </div>
-      <PostHeader hideOverflow={!isFullPostOpen} />
+      <PostHeader 
+        hideOverflow={!isFullPostOpen}
+        avatar={avatar}
+        username={username}
+        timestamp={timestamp}
+      />
       <div className={styles.postContent}>
-        <PostContent />
+        <PostContent 
+          contentImage={contentImage}
+          content={content}
+        />
       </div>
       <PostFooter />
     </div>

@@ -1,55 +1,78 @@
 .modQueueReview {
+  max-width: 540px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  height: 100%;
-  background-color: var(--color-content);
-  color: var(--color-content-fg);
-  width: 540px;
-  border-radius: 8px;
+  gap: 12px;
   padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-content);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: max-height 0.7s ease-out, opacity 0.5s linear;
+  max-height: 1000px; /* Arbitrary large height to accommodate content */
+  overflow: hidden;
+  opacity: 1;
+}
+
+.dismissed {
+  max-height: 0;
+  opacity: 0;
+  border: none;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .actionsPrimary {
   display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+.helpfulInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.reportedReasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.reportedReason,
+.helpfulInfoItem {
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: var(--color-content-tint-light);
+  color: var(--color-content-fg);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
 }
 
 .reportedContent {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  margin-top: 12px;
+  max-width: 508px;
 }
 
 .reportedContent h3 {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  color: var(--color-content-fg-secondary);
+  margin: 0;
+  color: var(--color-content-fg);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
 }
 
 .reportedContentContainer {
   border: 1px solid var(--color-content-border);
   border-radius: 8px;
   overflow: hidden;
-}
-
-.relevantInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.notice {
-  background: var(--color-content-tint-light);
-  border-radius: 4px;
-  padding: 6px 10px;
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-tight);
 }

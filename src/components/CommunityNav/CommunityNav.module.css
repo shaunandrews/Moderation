@@ -23,6 +23,7 @@ hr {
   cursor: pointer;
   color: var(--color-chrome-fg-secondary);
   text-decoration: none;
+  font-weight: var(--font-weight-normal);
 }
 
 .communityNavItem:hover {
