@@ -1,0 +1,25 @@
+.educationalMessage {
+  padding: 12px 16px;
+  background-color: #f2efff;
+  border-radius: 8px;
+}
+
+.educationalMessage p {
+  font-size: var(--font-size-sm);
+  color: #4a3799;
+}
+
+.reasonField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-content-border);
+}
