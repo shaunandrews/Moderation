@@ -9,7 +9,17 @@ import { ModerationContext } from '../../App'
 import OverflowIcon from '../icons/OverflowIcon'
 import ChevronDownIcon from '../icons/ChevronDownIcon'
 
-export default function ModQueueReview({ reviewId, onDismissed }) {
+export default function ModQueueReview({ 
+  reviewId, 
+  onDismissed,
+  reportCount = 3,
+  reportedPost,
+  reportedReasons = ['Against community guidelines', 'Harmful behavior'],
+  helpfulInfo = [
+    '<strong>@authorblog</strong> has had 3 posts removed in the last month',
+    '<strong>@sarah-mod</strong>: Got a bunch of reports for this post, but it\'s not violating guidelines. I think there may be a campaign against this user.'
+  ]
+}) {
   const { setModerationOpen, setModerationDismissCallback } = useContext(ModerationContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
@@ -84,7 +94,7 @@ export default function ModQueueReview({ reviewId, onDismissed }) {
         <Button 
           type="outline"
           label="reports"
-          count={3}
+          count={reportCount}
           facepileImages={[
             './images/carl.jpeg',
             './images/dwight.jpeg',
@@ -120,30 +130,31 @@ export default function ModQueueReview({ reviewId, onDismissed }) {
 
       <div className={styles.helpfulInfo}>
         <div className={styles.reportedReasons}>
-          <span className={styles.reportedReason}>Against community guidelines</span>
-          <span className={styles.reportedReason}>Harmful behavior</span>
+          {reportedReasons.map((reason, index) => (
+            <span key={index} className={styles.reportedReason}>{reason}</span>
+          ))}
         </div>
         
-        <div className={styles.helpfulInfoItem}>
-          <span><strong>@authorblog</strong> has had 3 posts removed in the last month</span>
-        </div>
-
-        <div className={styles.helpfulInfoItem}>
-          <span><strong>@sarah-mod</strong>: Got a bunch of reports for this post, but it's not violating guidelines. I think there may be a campaign against this user.</span>
-        </div>
+        {helpfulInfo.map((info, index) => (
+          <div key={index} className={styles.helpfulInfoItem}>
+            <span dangerouslySetInnerHTML={{ __html: info }} />
+          </div>
+        ))}
       </div>
       
       <div className={styles.reportedContent}>
         <h3>Reported post</h3>
         <div className={styles.reportedContentContainer}>
-          <Post
-            initialPreview={true}
-            username="photography-lover"
-            avatar="https://assets.tumblr.com/images/default_avatar/sphere_open_64.png"
-            timestamp="2h"
-            contentImage="https://64.media.tumblr.com/e46c7bd91a46671840be0a335600bb74/41aba1ddd5db6b07-48/s1280x1920/a23113327e04d3878a2abc5d484549c4e49d9795.jpg"
-            content={<p>Just captured this amazing sunset at the beach. The colors were absolutely incredible! 🌅 #photography #sunset #beach</p>}
-          />
+          {reportedPost || (
+            <Post
+              initialPreview={true}
+              username="photography-lover"
+              avatar="https://assets.tumblr.com/images/default_avatar/sphere_open_64.png"
+              timestamp="2h"
+              contentImage="https://64.media.tumblr.com/e46c7bd91a46671840be0a335600bb74/41aba1ddd5db6b07-48/s1280x1920/a23113327e04d3878a2abc5d484549c4e49d9795.jpg"
+              content={<p>Just captured this amazing sunset at the beach. The colors were absolutely incredible! 🌅 #photography #sunset #beach</p>}
+            />
+          )}
         </div>
       </div>
 
