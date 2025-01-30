@@ -2,7 +2,8 @@ import styles from './ModQueueReview.module.css'
 import Post from '../Post/Post'
 import Button from '../Button/Button'
 import Menu, { MenuItem, MenuDivider } from '../Menu/Menu'
-import DismissModal from '../DismissModal/DismissModal'
+import ModalDismissReport from '../ModalDismissReport/ModalDismissReport'
+import ModalReports from '../ModalReports/ModalReports'
 import { useContext, useRef, useState, useEffect } from 'react'
 import { ModerationContext } from '../../App'
 import OverflowIcon from '../icons/OverflowIcon'
@@ -13,8 +14,30 @@ export default function ModQueueReview({ reviewId, onDismissed }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [isDismissModalOpen, setIsDismissModalOpen] = useState(false);
+  const [isReportsModalOpen, setIsReportsModalOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const buttonRef = useRef(null);
+
+  // Example reports data - in a real app, this would come from props or an API
+  const reports = [
+    {
+      reporterName: '@sarah-mod',
+      timestamp: '2h ago',
+      reason: 'Against community guidelines',
+      comment: 'This post contains inappropriate content'
+    },
+    {
+      reporterName: '@moderator2',
+      timestamp: '3h ago',
+      reason: 'Harmful behavior',
+      comment: 'User is engaging in harmful behavior'
+    },
+    {
+      reporterName: '@moderator3',
+      timestamp: '4h ago',
+      reason: 'Against community guidelines',
+    }
+  ];
 
   useEffect(() => {
     if (isDismissed) {
@@ -67,6 +90,7 @@ export default function ModQueueReview({ reviewId, onDismissed }) {
             './images/dwight.jpeg',
             './images/paulie.jpeg'
           ]}
+          onClick={() => setIsReportsModalOpen(true)}
         />
         <div className={styles.actionsPrimary}>
           <Button
@@ -112,14 +136,27 @@ export default function ModQueueReview({ reviewId, onDismissed }) {
       <div className={styles.reportedContent}>
         <h3>Reported post</h3>
         <div className={styles.reportedContentContainer}>
-          <Post initialPreview={true} />
+          <Post
+            initialPreview={true}
+            username="photography-lover"
+            avatar="https://assets.tumblr.com/images/default_avatar/sphere_open_64.png"
+            timestamp="2h"
+            contentImage="https://64.media.tumblr.com/e46c7bd91a46671840be0a335600bb74/41aba1ddd5db6b07-48/s1280x1920/a23113327e04d3878a2abc5d484549c4e49d9795.jpg"
+            content={<p>Just captured this amazing sunset at the beach. The colors were absolutely incredible! 🌅 #photography #sunset #beach</p>}
+          />
         </div>
       </div>
 
-      <DismissModal 
+      <ModalDismissReport
         isOpen={isDismissModalOpen}
         onClose={() => setIsDismissModalOpen(false)}
         onDismiss={handleDismissConfirm}
+      />
+
+      <ModalReports
+        isOpen={isReportsModalOpen}
+        onClose={() => setIsReportsModalOpen(false)}
+        reports={reports}
       />
     </div>
   );

@@ -9,7 +9,6 @@
   background-color: var(--color-content);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: max-height 0.7s ease-out, opacity 0.5s linear;
-  max-height: 1000px; /* Arbitrary large height to accommodate content */
   overflow: hidden;
   opacity: 1;
 }
