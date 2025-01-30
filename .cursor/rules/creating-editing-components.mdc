@@ -4,6 +4,6 @@ globs:
 ---
 When adding a new component always create a new folder in the /src/components directory.
 
-Every component folder should have a README.md file that describes the component and its usage.
+Every component folder should have a README.md file that describes the component and its usage. Use it.
 
 When editing an existing component, update the README.md file to reflect the changes. If one doesn't exist, create it.
