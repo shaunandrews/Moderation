@@ -11,6 +11,14 @@ export default function CommunityNav() {
   
   return (
     <div className={styles.communityNav}>
+      <header className={styles.communityNavHeader}>
+        <img className={styles.communityNavAvatar} height={48} width={48} src="./images/avatar-designt.jpg" alt="Design't, a Tumblr Community" />
+        <div className={styles.communityNavDescription}>
+          <div className={styles.communityNavName}>Design't</div>
+          <div className={styles.communityNavHandle}>@@designt</div>
+        </div>
+      </header>
+      <hr />
       <Link 
         to="/" 
         className={`${styles.communityNavItem} ${location.pathname === '/' ? styles.active : ''}`}

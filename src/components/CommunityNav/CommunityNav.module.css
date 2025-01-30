@@ -9,6 +9,31 @@
   border: 1px solid var(--color-chrome-panel-border);
 }
 
+.communityNavHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+}
+
+.communityNavAvatar {
+  border-radius: 4px;
+}
+
+.communityNavDescription {
+  display: flex;
+  flex-direction: column;
+}
+
+.communityNavName {
+  font-weight: var(--font-weight-bold);
+}
+
+.communityNavHandle {
+  color: var(--color-chrome-fg-secondary);
+  font-weight: var(--font-weight-regular);
+}
+
 hr {
   border: none;
   height: 1px;
