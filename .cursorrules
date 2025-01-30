@@ -1,4 +1,4 @@
-During you interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again. 
+During you interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again.
 
 You should also use the `.cursorrules` file as a scratchpad to organize your thoughts. Especially when you receive a new task, you should first review the content of the scratchpad, clear old different task if necessary, first explain the task, and plan the steps you need to take to complete the task. You can use todo markers to indicate the progress, e.g.
 [X] Task 1
@@ -10,18 +10,21 @@ The goal is to help you maintain a big picture as well as the progress of the ta
 
 --
 
-When adding a new component always create a new folder in the /src/components directory.
-
-Every component folder should have a README.md file that describes the component and its usage.
-
-When editing an existing component, update the README.md file to reflect the changes. If one doesn't exist, create it.
-
-When writing CSS always reference /src/colors.css and /src/typography.css for color and typography variables.
-
-Ask before adding new CSS variables.
-
---
-
 # Lessons
 
+- Always use existing color variables from colors.css, don't invent new ones
+- Color variables for modals should use --color-content-\* variables since modals appear over content
+
 # Scratchpad
+
+Task: Update Modal component CSS to use correct color variables from colors.css
+
+[X] Review colors.css for available variables
+[X] Update Modal.module.css with correct color variables
+[X] Verify all color-related variables are properly referenced
+
+Changes made:
+
+- Replaced custom/incorrect variables with proper ones from colors.css
+- Used content-themed variables since modal appears over content
+- Updated background colors, text colors, borders, and shadows to use proper variables

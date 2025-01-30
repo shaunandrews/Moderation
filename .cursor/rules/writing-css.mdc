@@ -1,0 +1,9 @@
+---
+description: Anytime you write CSS
+globs: 
+---
+All CSS colors should use established [colors.css](mdc:src/colors.css)
+
+All CSS font and type properties should use established [typography.css](mdc:src/typography.css)
+
+Ask before adding new CSS variables.
