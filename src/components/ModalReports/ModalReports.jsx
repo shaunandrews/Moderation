@@ -19,7 +19,6 @@ export default function ModalReports({ isOpen, onClose, reports = [] }) {
       isOpen={isOpen}
       onClose={onClose}
       title="Reports"
-      footer={footer}
     >
       <div className={styles.reportsList}>
         {reports.map((report, index) => (
