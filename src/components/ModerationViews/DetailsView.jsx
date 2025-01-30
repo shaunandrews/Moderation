@@ -232,6 +232,8 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
           maxCharacters={300}
         />
         <TextField 
+          multiline
+          rows={3}
           placeholder="Your post was removed because..."
           value={authorMessage}
           onChange={(e) => setAuthorMessage(e.target.value)}
@@ -246,6 +248,8 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
           maxCharacters={300}
         />
         <TextField 
+          multiline
+          rows={1}
           icon={<LockIcon />}
           placeholder="Here's some private context and notes..."
           value={moderatorNote}
