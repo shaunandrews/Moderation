@@ -5,7 +5,6 @@
 
 .field {
   width: 100%;
-  /* min-height: 48px; */
   padding: 10px 16px;
   background: var(--color-content-tint-light);
   border: 2px solid transparent;
@@ -46,7 +45,9 @@
 .icon {
   position: absolute;
   left: 16px;
-  top: 11px;
+  top: 12px;
+  height: 18px;
+  width: 18px;
   color: var(--color-content-fg-tertiary);
   display: flex;
   align-items: center;
