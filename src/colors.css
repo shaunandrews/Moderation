@@ -1,7 +1,7 @@
 :root {
   /* Chrome Colors */
   --color-chrome: #001935;
-  --color-chrome-tint-dark: rgba(0, 25, 53, 0.85);
+  --color-chrome-tint-dark: rgba(0, 25, 53, 0.80);
   --color-chrome-tint-light: rgba(0, 25, 53, 0.15);
   --color-chrome-tint-hover: rgba(0, 25, 53, 0.2);
   
@@ -15,7 +15,7 @@
 
   /* Content Colors */
   --color-content: #ffffff;
-  --color-content-tint-dark: rgba(0, 0, 0, 0.85);
+  --color-content-tint-dark: rgba(0, 0, 0, 0.80);
   --color-content-tint-light: rgba(0, 0, 0, 0.075);
   --color-content-tint-hover: rgba(0, 0, 0, 0.1);
   --color-content-fg: #000000;
