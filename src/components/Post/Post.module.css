@@ -2,6 +2,7 @@
   background: var(--color-content-primary);
   background-color: var(--color-content);
   color: var(--color-content-fg);
+  width: 100%;
   max-width: 540px;
   border-radius: 8px;
   overflow: hidden;

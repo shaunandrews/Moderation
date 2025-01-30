@@ -2,9 +2,6 @@
   flex-shrink: 0;
   width: 920px;
   background-color: var(--color-chrome-panel);
-  background-image: url("/images/banner.jpg");
-  background-size: cover;
-  background-position: center;
   border-radius: 12px;
   max-height: 280px;
   height: 280px;
@@ -15,16 +12,22 @@
   overflow: hidden;
 }
 
-.mini {
-  height: 80px;
-}
-
-.mini .container {
-  align-items: center;
-  padding: 0 20px;
+.bannerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   flex-grow: 1;
   display: flex;
   align-items: flex-end;
@@ -44,29 +47,8 @@
   line-height: var(--line-height-tight);
 }
 
-.role {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  margin-top: 12px;
-  font-size: var(--font-size-sm);
-}
-
-.roleIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-}
-
-.roleName {
-  font-weight: var(--font-weight-bold);
-}
-
-.roleUsername {
-  opacity: 0.7;
-  margin-left: 12px;
+.identity .description {
+  margin-bottom: 12px;
 }
 
 .meta {
@@ -100,8 +82,8 @@
     width: 9px;
     height: 9px;
     background-color: rgb(1, 207, 53);
-    border-top: 1px solid rgba(255,255,255, .2);
-    border-bottom: 1px solid rgba(0,0,0, .1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     box-shadow: 0 0 0 4px rgba(1, 207, 53, 0.2);
     animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;

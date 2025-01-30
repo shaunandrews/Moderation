@@ -41,7 +41,14 @@ const mockPosts = [
 
 export default function CommunityHomeAdmin() {
   return (
-    <Layout className={styles.content}>
+    <Layout 
+      className={styles.content}
+      title="Design't"
+      description="tumblr designers"
+      role="admin"
+      username="shaunandrews"
+      bannerImage="/images/banner-designt.jpg"
+    >
       {mockPosts.map((post, index) => (
         <Post
           key={index}

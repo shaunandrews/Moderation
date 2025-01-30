@@ -6,7 +6,7 @@ import MembersIcon from '../icons/MembersIcon'
 import AboutIcon from '../icons/AboutIcon'
 import styles from './CommunityNav.module.css'
 
-export default function CommunityNav() {
+export default function CommunityNav({ role }) {
   const location = useLocation();
   
   return (
@@ -40,26 +40,31 @@ export default function CommunityNav() {
         </span>
         <span className={styles.communityNavItemLabel}>About this community</span>
       </Link>
-      <hr />
-      <Link 
-        to="/mod-queue" 
-        className={`${styles.communityNavItem} ${location.pathname === '/mod-queue' ? styles.active : ''}`}
-      >
-        <span className={styles.communityNavItemIcon}>
-          <ModQueueIcon />
-        </span>
-        <span className={styles.communityNavItemLabel}>Mod queue</span>
-        <span className={styles.communityNavItemCount}>4</span>
-      </Link>
-      <Link 
-        to="/audit-log" 
-        className={`${styles.communityNavItem} ${location.pathname === '/audit-log' ? styles.active : ''}`}
-      >
-        <span className={styles.communityNavItemIcon}>
-          <AuditLogIcon />
-        </span>
-        <span className={styles.communityNavItemLabel}>Audit log</span>
-      </Link>
+      
+      {(role === 'admin' || role === 'moderator') && (
+        <>
+          <hr />
+          <Link 
+            to="/mod-queue" 
+            className={`${styles.communityNavItem} ${location.pathname === '/mod-queue' ? styles.active : ''}`}
+          >
+            <span className={styles.communityNavItemIcon}>
+              <ModQueueIcon />
+            </span>
+            <span className={styles.communityNavItemLabel}>Mod queue</span>
+            <span className={styles.communityNavItemCount}>4</span>
+          </Link>
+          <Link 
+            to="/audit-log" 
+            className={`${styles.communityNavItem} ${location.pathname === '/audit-log' ? styles.active : ''}`}
+          >
+            <span className={styles.communityNavItemIcon}>
+              <AuditLogIcon />
+            </span>
+            <span className={styles.communityNavItemLabel}>Audit log</span>
+          </Link>
+        </>
+      )}
     </div>
   )
 } 

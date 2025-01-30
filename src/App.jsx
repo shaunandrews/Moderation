@@ -9,6 +9,7 @@ import AuditLog from './components/AuditLog/AuditLog'
 import AuditLogDetails from './components/AuditLogDetails/AuditLogDetails'
 import ModerationSidebar from './components/ModerationSidebar/ModerationSidebar'
 import CommunityHomeAdmin from './components/CommunityHomeAdmin/CommunityHomeAdmin'
+import CommunityHomeMember from './components/CommunityHomeMember/CommunityHomeMember'
 
 // Create a context for moderation state
 export const ModerationContext = createContext();
@@ -36,6 +37,7 @@ export default function App() {
           <TopBar />
           <Routes>
             <Route path="/" element={<CommunityHomeAdmin />} />
+            <Route path="/group-meowing" element={<CommunityHomeMember />} />
             <Route path="/mod-queue" element={<ModQueue />} />
             <Route path="/audit-log" element={<AuditLog />} />
             <Route path="/audit-log/:id" element={<AuditLogDetails />} />

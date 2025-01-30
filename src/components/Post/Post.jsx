@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './Post.module.css';
 import PostHeader from '../PostHeader/PostHeader';
 import PostContent from '../PostContent/PostContent';
 import PostFooter from '../PostFooter/PostFooter';
 import Button from '../Button/Button';
+import { RoleContext } from '../Layout/Layout';
 
 const defaultContent = (
   <p>This is a placeholder post content. It would normally contain the actual content of the post.</p>
@@ -19,6 +20,7 @@ const Post = ({
 }) => {
   const [isPreview, setIsPreview] = useState(initialPreview);
   const [isFullPostOpen, setIsFullPostOpen] = useState(false);
+  const role = useContext(RoleContext);
 
   if (!isPreview) {
     return (
@@ -27,6 +29,7 @@ const Post = ({
           avatar={avatar}
           username={username}
           timestamp={timestamp}
+          role={role}
         />
         <div className={styles.postContent}>
           <PostContent 
@@ -53,6 +56,7 @@ const Post = ({
         avatar={avatar}
         username={username}
         timestamp={timestamp}
+        role={role}
       />
       <div className={styles.postContent}>
         <PostContent 

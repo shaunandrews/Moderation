@@ -17,14 +17,14 @@ The goal is to help you maintain a big picture as well as the progress of the ta
 
 # Scratchpad
 
-Task: Update Modal component CSS to use correct color variables from colors.css
+Task: Add missing role prop to ModQueue and AuditLog components
 
-[X] Review colors.css for available variables
-[X] Update Modal.module.css with correct color variables
-[X] Verify all color-related variables are properly referenced
+[X] Check Layout component implementation for role prop handling
+[X] Update ModQueue.jsx to pass role="admin" to Layout
+[X] Update AuditLog.jsx to pass role="admin" to Layout
 
 Changes made:
 
-- Replaced custom/incorrect variables with proper ones from colors.css
-- Used content-themed variables since modal appears over content
-- Updated background colors, text colors, borders, and shadows to use proper variables
+- Added role="admin" prop to Layout in ModQueue component
+- Added role="admin" prop to Layout in AuditLog component
+- Ensures admin navigation items are properly displayed in both sections

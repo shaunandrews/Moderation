@@ -9,7 +9,8 @@ const PostHeader = ({
   hideOverflow = false,
   avatar = 'https://assets.tumblr.com/images/default_avatar/cube_closed_64.png',
   username = 'anonymous-user',
-  timestamp = 'just now'
+  timestamp = 'just now',
+  role
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { setModerationOpen } = useContext(ModerationContext);
@@ -46,6 +47,16 @@ const PostHeader = ({
     setMenuOpen(false);
   };
 
+  const handleReportPost = () => {
+    // Handle report post action
+    setMenuOpen(false);
+  };
+
+  const handleBlockUser = () => {
+    // Handle block user action
+    setMenuOpen(false);
+  };
+
   return (
     <div className={styles.header}>
       <div className={styles.userInfo}>
@@ -79,8 +90,22 @@ const PostHeader = ({
             <MenuItem onClick={handleCopyLink}>Copy link</MenuItem>
             <MenuItem onClick={handleFollowBlog}>Follow @blogname</MenuItem>
             <MenuDivider />
-            <MenuItem onClick={handleModeratePost} danger>Moderate post</MenuItem>
-            <MenuItem onClick={handleRemoveMember} danger>Remove @scotty-blog</MenuItem>
+            
+            {/* Show member actions for member role */}
+            {role === 'member' && (
+              <>
+                <MenuItem onClick={handleReportPost} danger>Report post</MenuItem>
+                <MenuItem onClick={handleBlockUser} danger>Block user</MenuItem>
+              </>
+            )}
+            
+            {/* Only show moderation actions for admin role */}
+            {role === 'admin' && (
+              <>
+                <MenuItem onClick={handleModeratePost} danger>Moderate post</MenuItem>
+                <MenuItem onClick={handleRemoveMember} danger>Remove @scotty-blog</MenuItem>
+              </>
+            )}
           </Menu>
         </>
       )}

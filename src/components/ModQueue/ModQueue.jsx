@@ -54,7 +54,7 @@ export default function ModQueue() {
   };
 
   return (
-    <Layout className={styles.modQueue}>
+    <Layout className={styles.modQueue} role="admin">
       {reviews.length > 0 ? (
         reviews.map(review => (
           <ModQueueReview 

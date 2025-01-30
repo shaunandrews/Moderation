@@ -1,0 +1,32 @@
+.role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: var(--line-height-tight);
+}
+
+.roleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.adminIcon {
+  color: #FF8A00;
+}
+
+.memberIcon {
+  color: #01CF35;
+}
+
+.roleName {
+  color: var(--color-chrome-fg);
+  font-weight: var(--font-weight-bold);
+}
+
+.roleUsername {
+  color: var(--color-chrome-fg-secondary);
+}
