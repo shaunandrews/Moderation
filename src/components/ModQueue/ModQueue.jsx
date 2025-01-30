@@ -34,7 +34,7 @@ export default function ModQueue() {
     },
     { 
       id: 3,
-      reportCount: "12,392",
+      reportCount: 789,
       reportedReasons: ['Against community guidelines'],
       helpfulInfo: ['First report for this member']
     },
