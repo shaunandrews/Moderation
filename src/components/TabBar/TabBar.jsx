@@ -4,8 +4,6 @@ import styles from './TabBar.module.css'
 
 export default function TabBar() {
   const location = useLocation()
-  const [selectedTab, setSelectedTab] = useState('All')
-  const [indicatorStyle, setIndicatorStyle] = useState({})
   const tabsRef = useRef({})
   
   // Define tab configurations based on routes
@@ -20,6 +18,21 @@ export default function TabBar() {
     }
   }
 
+  // Initialize selected tab based on current route
+  const [selectedTab, setSelectedTab] = useState(() => {
+    const tabs = getTabs()
+    return tabs[0] // Default to first tab
+  })
+
+  const [indicatorStyle, setIndicatorStyle] = useState({})
+
+  // Update selected tab when route changes
+  useEffect(() => {
+    const tabs = getTabs()
+    setSelectedTab(tabs[0])
+  }, [location.pathname])
+
+  // Update indicator position
   useEffect(() => {
     const selectedElement = tabsRef.current[selectedTab]
     if (selectedElement) {
