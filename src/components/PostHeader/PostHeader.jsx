@@ -4,7 +4,6 @@ import Button from '../Button/Button';
 import Menu, { MenuItem, MenuDivider } from '../Menu/Menu';
 import { ModerationContext } from '../../App';
 import OverflowIcon from '../icons/OverflowIcon';
-import ModalReportPost from '../ModalReportPost/ModalReportPost';
 
 const PostHeader = ({ 
   hideOverflow = false,
@@ -51,7 +50,6 @@ const PostHeader = ({
 
   const handleReportPost = () => {
     setMenuOpen(false);
-    setReportModalOpen(true);
   };
 
   const handleReportSubmit = (reason) => {
@@ -114,12 +112,6 @@ const PostHeader = ({
               </>
             )}
           </Menu>
-
-          <ModalReportPost
-            isOpen={reportModalOpen}
-            onClose={() => setReportModalOpen(false)}
-            onSubmit={handleReportSubmit}
-          />
         </>
       )}
     </div>
