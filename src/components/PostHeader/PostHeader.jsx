@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import Menu, { MenuItem, MenuDivider } from '../Menu/Menu';
 import { ModerationContext } from '../../App';
 import OverflowIcon from '../icons/OverflowIcon';
+import ModalReportPost from '../ModalReportPost/ModalReportPost';
 
 const PostHeader = ({ 
   hideOverflow = false,
@@ -13,6 +14,7 @@ const PostHeader = ({
   role
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [reportModalOpen, setReportModalOpen] = useState(false);
   const { setModerationOpen } = useContext(ModerationContext);
   const buttonRef = useRef(null);
 
@@ -48,8 +50,13 @@ const PostHeader = ({
   };
 
   const handleReportPost = () => {
-    // Handle report post action
     setMenuOpen(false);
+    setReportModalOpen(true);
+  };
+
+  const handleReportSubmit = (reason) => {
+    // Handle the report submission with the selected reason
+    console.log('Post reported with reason:', reason);
   };
 
   const handleBlockUser = () => {
@@ -107,6 +114,12 @@ const PostHeader = ({
               </>
             )}
           </Menu>
+
+          <ModalReportPost
+            isOpen={reportModalOpen}
+            onClose={() => setReportModalOpen(false)}
+            onSubmit={handleReportSubmit}
+          />
         </>
       )}
     </div>
