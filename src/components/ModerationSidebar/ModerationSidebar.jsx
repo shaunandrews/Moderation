@@ -11,7 +11,7 @@ import styles from './ModerationSidebar.module.css';
 const VIEWS = {
   groups: {
     component: GroupsView,
-    title: 'Moderate post'
+    title: ({ action }) => action === 'report' ? 'Report post' : 'Moderate post'
   },
   details: {
     component: DetailsView,
@@ -30,11 +30,11 @@ const VIEWS = {
   },
   confirmation: {
     component: ConfirmationView,
-    title: 'Post removed'
+    title: ({ action }) => action === 'report' ? 'Post reported' : 'Post removed'
   }
 };
 
-const ModerationSidebar = ({ isOpen, onClose }) => {
+const ModerationSidebar = ({ isOpen, onClose, action = 'remove' }) => {
   const [isRendered, setIsRendered] = useState(isOpen);
   const [currentView, setCurrentView] = useState('groups');
   const [viewStack, setViewStack] = useState(['groups']);
@@ -145,7 +145,8 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
         selectedReason,
         authorMessage: viewData.details.authorMessage,
         moderatorNote: viewData.details.moderatorNote,
-        escalateToStaff: viewData.details.escalateToStaff
+        escalateToStaff: viewData.details.escalateToStaff,
+        reportReason: viewData.details.reportReason
       });
     }
   };
@@ -162,7 +163,7 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
 
   return (
     <animated.div 
-      className={styles.container} 
+      className={`${styles.container} ${styles[action]}`}
       onClick={handleScrimClick}
       style={{
         opacity: springs.opacity,
@@ -180,7 +181,7 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
             onClose={handleClose} 
             onBack={canGoBack ? handleNavigateBack : undefined}
             title={typeof VIEWS[currentView].title === 'function' 
-              ? VIEWS[currentView].title(viewData[currentView] || {})
+              ? VIEWS[currentView].title({ ...viewData[currentView], action }) 
               : VIEWS[currentView].title}
           />
         )}
@@ -194,6 +195,7 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
                   viewData={viewData[item]}
                   onReasonSelect={handleReasonSelect}
                   onClose={handleClose}
+                  action={action}
                   showError={showError && (
                     (item === 'groups') || 
                     (item === 'details')
@@ -207,7 +209,7 @@ const ModerationSidebar = ({ isOpen, onClose }) => {
           <ModerationSidebarFooter 
             onCancel={handleClose} 
             onRemove={handleRemove}
-            showRemove={true}
+            action={action}
           />
         )}
       </animated.div>

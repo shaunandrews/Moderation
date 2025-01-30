@@ -14,7 +14,7 @@ const PostHeader = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
-  const { setModerationOpen } = useContext(ModerationContext);
+  const { setModerationOpen, setModerationAction } = useContext(ModerationContext);
   const buttonRef = useRef(null);
 
   const handleViewPost = () => {
@@ -41,6 +41,8 @@ const PostHeader = ({
     console.log('Opening moderation sidebar...'); // Debug log
     setMenuOpen(false);
     setModerationOpen(true);
+    // Set the action to "remove" when moderating a post
+    setModerationAction('remove');
   };
 
   const handleRemoveMember = () => {
@@ -50,6 +52,9 @@ const PostHeader = ({
 
   const handleReportPost = () => {
     setMenuOpen(false);
+    setModerationOpen(true);
+    // Set the action to "report" when reporting a post
+    setModerationAction('report');
   };
 
   const handleReportSubmit = (reason) => {

@@ -17,11 +17,13 @@ export const ModerationContext = createContext();
 export default function App() {
   const [moderationOpen, setModerationOpen] = useState(false);
   const [moderationDismissCallback, setModerationDismissCallback] = useState(null);
+  const [moderationAction, setModerationAction] = useState('remove');
 
   const handleModerationClose = () => {
     setModerationOpen(false);
-    // Reset the callback when moderation is closed without completion
+    // Reset the callback and action when moderation is closed without completion
     setModerationDismissCallback(null);
+    setModerationAction('remove');
   };
 
   return (
@@ -30,7 +32,9 @@ export default function App() {
         moderationOpen,
         setModerationOpen,
         moderationDismissCallback,
-        setModerationDismissCallback
+        setModerationDismissCallback,
+        moderationAction,
+        setModerationAction
       }}>
         <div className={styles.app}>
           <Sidebar />
@@ -45,6 +49,7 @@ export default function App() {
           <ModerationSidebar 
             isOpen={moderationOpen}
             onClose={handleModerationClose}
+            action={moderationAction}
           />
         </div>
       </ModerationContext.Provider>

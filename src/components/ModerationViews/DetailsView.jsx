@@ -20,11 +20,12 @@ const GUIDELINE_COLORS = [
   '#00C853'  // green
 ];
 
-const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
+const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError, action = 'remove' }) => {
   const [selectedReason, setSelectedReason] = useState(null);
   const [selectedGuidelines, setSelectedGuidelines] = useState([]);
   const [authorMessage, setAuthorMessage] = useState('');
   const [moderatorNote, setModeratorNote] = useState('');
+  const [reportReason, setReportReason] = useState('');
   const [escalateToStaff, setEscalateToStaff] = useState(false);
 
   const violenceOptions = [
@@ -224,46 +225,66 @@ const DetailsView = ({ onNavigate, viewData, onReasonSelect, showError }) => {
       <h2 className={styles.subtitle}>{subtitle}</h2>
       {renderOptions()}
 
-      <div className={styles.messageSection}>
-        <FormHeader
-          label="Author message"
-          hint="Shared with the author to explain why their post was removed."
-          characterCount={authorMessage.length}
-          maxCharacters={300}
-        />
-        <TextField 
-          multiline
-          rows={3}
-          placeholder="Your post was removed because..."
-          value={authorMessage}
-          onChange={(e) => setAuthorMessage(e.target.value)}
-        />
-      </div>
+      {action === 'report' ? (
+        <div className={styles.messageSection}>
+          <FormHeader
+            label="Report reason"
+            hint="Please provide additional context about why you're reporting this post."
+            characterCount={reportReason.length}
+            maxCharacters={300}
+          />
+          <TextField 
+            multiline
+            rows={3}
+            placeholder="I'm reporting this post because..."
+            value={reportReason}
+            onChange={(e) => setReportReason(e.target.value)}
+          />
+        </div>
+      ) : (
+        <>
+          <div className={styles.messageSection}>
+            <FormHeader
+              label="Author message"
+              hint="Shared with the author to explain why their post was removed."
+              characterCount={authorMessage.length}
+              maxCharacters={300}
+            />
+            <TextField 
+              multiline
+              rows={3}
+              placeholder="Your post was removed because..."
+              value={authorMessage}
+              onChange={(e) => setAuthorMessage(e.target.value)}
+            />
+          </div>
 
-      <div className={styles.messageSection}>
-        <FormHeader
-          label="Moderator note"
-          hint="Private notes for other moderators. This is not visible to the author."
-          characterCount={moderatorNote.length}
-          maxCharacters={300}
-        />
-        <TextField 
-          multiline
-          rows={1}
-          icon={<LockIcon />}
-          placeholder="Here's some private context and notes..."
-          value={moderatorNote}
-          onChange={(e) => setModeratorNote(e.target.value)}
-        />
-      </div>
+          <div className={styles.messageSection}>
+            <FormHeader
+              label="Moderator note"
+              hint="Private notes for other moderators. This is not visible to the author."
+              characterCount={moderatorNote.length}
+              maxCharacters={300}
+            />
+            <TextField 
+              multiline
+              rows={1}
+              icon={<LockIcon />}
+              placeholder="Here's some private context and notes..."
+              value={moderatorNote}
+              onChange={(e) => setModeratorNote(e.target.value)}
+            />
+          </div>
 
-      <div className={styles.messageSection}>
-        <StaffEscalation 
-          required={viewData?.groupId !== 'community'} 
-          checked={escalateToStaff}
-          onChange={setEscalateToStaff}
-        />
-      </div>
+          <div className={styles.messageSection}>
+            <StaffEscalation 
+              required={viewData?.groupId !== 'community'} 
+              checked={escalateToStaff}
+              onChange={setEscalateToStaff}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

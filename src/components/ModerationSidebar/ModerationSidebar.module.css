@@ -43,6 +43,16 @@
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
+/* .container.report {
+  justify-content: center;
+  align-items: center;
+}
+
+.container.report .sidebar {
+  min-height: 630px;
+  height: auto;
+} */
+
 /* Tablet styles */
 @media (max-width: 1024px) {
   .container {
