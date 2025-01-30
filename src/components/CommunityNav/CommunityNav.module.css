@@ -1,4 +1,6 @@
 .communityNav {
+  position: sticky;
+  top: 91px;
   display: flex;
   flex-direction: column;
   background-color: var(--color-chrome-panel);
@@ -39,4 +41,19 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.communityNavItemLabel {
+  flex: 1;
+}
+
+.communityNavItemCount {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  background-color: var(--color-button-danger-bg);
+  color: var(--color-button-danger-fg);
+  border-radius: 4px;
+  padding: 3px 5px;
 }
