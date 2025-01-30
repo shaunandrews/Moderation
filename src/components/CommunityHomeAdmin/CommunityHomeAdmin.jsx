@@ -1,4 +1,4 @@
-import styles from './Content.module.css'
+import styles from './CommunityHomeAdmin.module.css'
 import Post from '../Post/Post'
 import Layout from '../Layout/Layout'
 
@@ -39,7 +39,7 @@ const mockPosts = [
   }
 ];
 
-export default function Content() {
+export default function CommunityHomeAdmin() {
   return (
     <Layout className={styles.content}>
       {mockPosts.map((post, index) => (
