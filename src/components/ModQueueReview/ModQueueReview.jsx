@@ -7,7 +7,6 @@ import ModalReports from '../ModalReports/ModalReports'
 import { useContext, useRef, useState, useEffect } from 'react'
 import { ModerationContext } from '../../App'
 import OverflowIcon from '../icons/OverflowIcon'
-import ChevronDownIcon from '../icons/ChevronDownIcon'
 
 export default function ModQueueReview({ 
   reviewId, 
