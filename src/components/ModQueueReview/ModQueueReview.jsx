@@ -113,10 +113,9 @@ export default function ModQueueReview({
             onClose={() => setMenuOpen(false)}
             anchorEl={buttonRef.current}
           >
-            <MenuItem onClick={handleAddNote}>Add a private note</MenuItem>
-            <MenuItem onClick={handleViewPostHistory}>View post history</MenuItem>
+            {/* <MenuItem onClick={handleViewPostHistory}>View post history</MenuItem> */}
             <MenuItem onClick={handleViewMemberHistory}>View member history</MenuItem>
-            <MenuDivider />
+            {/* <MenuDivider /> */}
             <MenuItem onClick={handleDismissReports}>Dismiss all reports</MenuItem>
           </Menu>
           <Button
