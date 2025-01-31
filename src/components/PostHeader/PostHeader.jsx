@@ -14,7 +14,7 @@ const PostHeader = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
-  const { setModerationOpen, setModerationAction } = useContext(ModerationContext);
+  const { setModerationOpen, setModerationAction, setModerationSource } = useContext(ModerationContext);
   const buttonRef = useRef(null);
 
   const handleViewPost = () => {
@@ -43,6 +43,8 @@ const PostHeader = ({
     setModerationOpen(true);
     // Set the action to "remove" when moderating a post
     setModerationAction('remove');
+    // Set source to 'community' since only community admins can moderate
+    setModerationSource('community');
   };
 
   const handleRemoveMember = () => {
@@ -55,6 +57,8 @@ const PostHeader = ({
     setModerationOpen(true);
     // Set the action to "report" when reporting a post
     setModerationAction('report');
+    // Set source based on role - if we're in a community view, the role will be defined
+    setModerationSource(role ? 'community' : 'home');
   };
 
   const handleReportSubmit = (reason) => {
@@ -101,19 +105,16 @@ const PostHeader = ({
             <MenuItem onClick={handleFollowBlog}>Follow @blogname</MenuItem>
             <MenuDivider />
             
-            {/* Show member actions for member role */}
-            {role === 'member' && (
+            {/* Show moderation actions for admin role */}
+            {role === 'admin' ? (
+              <>
+                <MenuItem onClick={handleModeratePost} danger>Moderate post</MenuItem>
+                <MenuItem onClick={handleRemoveMember} danger>Remove user</MenuItem>
+              </>
+            ) : (
               <>
                 <MenuItem onClick={handleReportPost} danger>Report post</MenuItem>
                 <MenuItem onClick={handleBlockUser} danger>Block user</MenuItem>
-              </>
-            )}
-            
-            {/* Only show moderation actions for admin role */}
-            {role === 'admin' && (
-              <>
-                <MenuItem onClick={handleModeratePost} danger>Moderate post</MenuItem>
-                <MenuItem onClick={handleRemoveMember} danger>Remove @scotty-blog</MenuItem>
               </>
             )}
           </Menu>

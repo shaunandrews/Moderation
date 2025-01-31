@@ -4,6 +4,71 @@ globs:
 ---
 All CSS colors should use established [colors.css](mdc:src/colors.css)
 
+  /* Chrome Colors */
+  --color-chrome: #001935;
+  --color-chrome-tint-dark: rgba(0, 25, 53, 0.80);
+  --color-chrome-tint-light: rgba(0, 25, 53, 0.15);
+  --color-chrome-tint-hover: rgba(0, 25, 53, 0.2);
+  
+  --color-chrome-fg: #ffffff;
+  --color-chrome-fg-secondary: #99a3ae;
+  --color-chrome-fg-tertiary: #667586;
+  --color-chrome-border: #1a3049;
+
+  --color-chrome-panel: #0D243F;
+  --color-chrome-panel-border: rgba(255, 255, 255, 0.05);
+
+  /* Content Colors */
+  --color-content: #ffffff;
+  --color-content-tint-dark: rgba(0, 0, 0, 0.80);
+  --color-content-tint-light: rgba(0, 0, 0, 0.075);
+  --color-content-tint-hover: rgba(0, 0, 0, 0.1);
+  --color-content-fg: #000000;
+  --color-content-fg-secondary: #667586;
+  --color-content-fg-tertiary: #99a3ae;
+  --color-content-border: #e0e0e0;
+
+  /* Accent Colors */
+  --color-accent: #00b8ff;
+  --color-accent-tint: #ccf1ff;
+  --color-danger: #FF4930;
+  --color-danger-tint: #FFE5E0;
+
+  /* Button Colors */
+  --color-button-primary-bg: #001935;
+  --color-button-primary-fg: #ffffff;
+  --color-button-primary-hover: #1a3049;
+
+  --color-button-secondary-bg: var(--color-content-tint-light);
+  --color-button-secondary-fg: var(--color-content-fg);
+  --color-button-secondary-hover: var(--color-content-tint-hover);
+
+  --color-button-danger-bg: var(--color-danger);
+  --color-button-danger-fg: #ffffff;
+  --color-button-danger-hover: #e5311a;
+
+  --color-button-text-fg: var(--color-content-fg);
+  --color-button-text-hover: var(--color-content-tint-hover);
+
 All CSS font and type properties should use established [typography.css](mdc:src/typography.css)
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 2rem; /* 32px */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.75;
 
 Ask before adding new CSS variables.

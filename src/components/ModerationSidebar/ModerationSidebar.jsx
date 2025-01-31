@@ -3,9 +3,9 @@ import { useSpring, animated, useTransition } from '@react-spring/web';
 import ModerationSidebarHeader from '../ModerationSidebarHeader/ModerationSidebarHeader';
 import ModerationSidebarContent from '../ModerationSidebarContent/ModerationSidebarContent';
 import ModerationSidebarFooter from '../ModerationSidebarFooter/ModerationSidebarFooter';
-import GroupsView from '../ModerationViews/GroupsView';
-import DetailsView from '../ModerationViews/DetailsView';
-import ConfirmationView from '../ModerationViews/ConfirmationView';
+import GroupsView from '../ModerationSidebarViews/GroupsView';
+import DetailsView from '../ModerationSidebarViews/DetailsView';
+import ConfirmationView from '../ModerationSidebarViews/ConfirmationView';
 import styles from './ModerationSidebar.module.css';
 
 const VIEWS = {
@@ -34,7 +34,7 @@ const VIEWS = {
   }
 };
 
-const ModerationSidebar = ({ isOpen, onClose, action = 'remove' }) => {
+const ModerationSidebar = ({ isOpen, onClose, action = 'remove', source = 'home' }) => {
   const [isRendered, setIsRendered] = useState(isOpen);
   const [currentView, setCurrentView] = useState('groups');
   const [viewStack, setViewStack] = useState(['groups']);
@@ -42,6 +42,7 @@ const ModerationSidebar = ({ isOpen, onClose, action = 'remove' }) => {
   const [direction, setDirection] = useState(0);
   const [selectedReason, setSelectedReason] = useState(null);
   const [showError, setShowError] = useState(false);
+  const [isActionButtonDisabled, setIsActionButtonDisabled] = useState(false);
 
   const resetState = () => {
     setCurrentView('groups');
@@ -196,10 +197,12 @@ const ModerationSidebar = ({ isOpen, onClose, action = 'remove' }) => {
                   onReasonSelect={handleReasonSelect}
                   onClose={handleClose}
                   action={action}
+                  source={source}
                   showError={showError && (
                     (item === 'groups') || 
                     (item === 'details')
                   )}
+                  onDisableActionButton={setIsActionButtonDisabled}
                 />
               </animated.div>
             );
@@ -210,6 +213,7 @@ const ModerationSidebar = ({ isOpen, onClose, action = 'remove' }) => {
             onCancel={handleClose} 
             onRemove={handleRemove}
             action={action}
+            isActionButtonDisabled={isActionButtonDisabled}
           />
         )}
       </animated.div>

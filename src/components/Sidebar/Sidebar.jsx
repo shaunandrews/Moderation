@@ -10,10 +10,10 @@ export default function Sidebar() {
     <aside className={styles.sidebar}>
       <LogoIcon />
       <div className={styles.sidebarNav}>
-        <div className={styles.sidebarNavItem}>
+        <Link to="/home" className={`${styles.sidebarNavItem} ${location.pathname === '/home' ? styles.active : ''}`}>
           <div className={styles.sidebarNavItemAvatar}><HomeIcon /></div>
           <span>Home</span>
-        </div>
+        </Link>
         <Link to="/" className={`${styles.sidebarNavItem} ${location.pathname === '/' ? styles.active : ''}`}>
           <div className={styles.sidebarNavItemAvatar}><img height={24} width={24} src="./images/avatar-designt.jpg" alt="Design't, a Tumblr Community" /></div>
           <span>Design't</span>

@@ -1,6 +1,6 @@
 import styles from './ModQueue.module.css'
+import CommunityLayout from '../CommunityLayout/CommunityLayout'
 import Post from '../Post/Post'
-import Layout from '../Layout/Layout'
 import ModQueueReview from '../ModQueueReview/ModQueueReview'
 import EmptyModQueue from './EmptyModQueue'
 import { useState } from 'react'
@@ -54,7 +54,7 @@ export default function ModQueue() {
   };
 
   return (
-    <Layout className={styles.modQueue} role="admin">
+    <CommunityLayout className={styles.modQueue} role="admin">
       {reviews.length > 0 ? (
         reviews.map(review => (
           <ModQueueReview 
@@ -70,6 +70,6 @@ export default function ModQueue() {
       ) : (
         <EmptyModQueue />
       )}
-    </Layout>
+    </CommunityLayout>
   )
 } 

@@ -3,8 +3,8 @@ import ReasonGroup from './ReasonGroup/ReasonGroup';
 import styles from './Views.module.css';
 import Post from '../Post/Post';
 
-const GroupsView = ({ onNavigate, showError }) => {
-  const groups = [
+const GroupsView = ({ onNavigate, showError, source = 'home' }) => {
+  const allGroups = [
     {
       id: 'community',
       title: 'Against community guidelines',
@@ -26,6 +26,10 @@ const GroupsView = ({ onNavigate, showError }) => {
       description: 'Examples: spam, copyright, trademark, terrorism'
     }
   ];
+
+  const groups = source === 'home' 
+    ? allGroups.filter(group => group.id !== 'community')
+    : allGroups;
 
   return (
     <div className={styles.view}>

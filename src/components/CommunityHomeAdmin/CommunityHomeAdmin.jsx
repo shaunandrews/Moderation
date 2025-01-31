@@ -1,6 +1,6 @@
 import styles from './CommunityHomeAdmin.module.css'
 import Post from '../Post/Post'
-import Layout from '../Layout/Layout'
+import CommunityLayout from '../CommunityLayout/CommunityLayout'
 
 const mockPosts = [
   {
@@ -41,7 +41,7 @@ const mockPosts = [
 
 export default function CommunityHomeAdmin() {
   return (
-    <Layout 
+    <CommunityLayout 
       className={styles.content}
       title="Design't"
       description="tumblr designers"
@@ -59,6 +59,6 @@ export default function CommunityHomeAdmin() {
           content={post.content}
         />
       ))}
-    </Layout>
+    </CommunityLayout>
   )
 } 

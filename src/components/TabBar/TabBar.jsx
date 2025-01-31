@@ -2,12 +2,14 @@ import { useLocation } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import styles from './TabBar.module.css'
 
-export default function TabBar() {
+export default function TabBar({ tabs: propTabs }) {
   const location = useLocation()
   const tabsRef = useRef({})
   
-  // Define tab configurations based on routes
+  // Define tab configurations based on routes if no tabs provided
   const getTabs = () => {
+    if (propTabs) return propTabs
+    
     switch (location.pathname) {
       case '/':
         return ['Latest', 'Polls']
@@ -18,7 +20,7 @@ export default function TabBar() {
     }
   }
 
-  // Initialize selected tab based on current route
+  // Initialize selected tab based on current route or provided tabs
   const [selectedTab, setSelectedTab] = useState(() => {
     const tabs = getTabs()
     return tabs[0] // Default to first tab
@@ -26,11 +28,11 @@ export default function TabBar() {
 
   const [indicatorStyle, setIndicatorStyle] = useState({})
 
-  // Update selected tab when route changes
+  // Update selected tab when route changes or tabs prop changes
   useEffect(() => {
     const tabs = getTabs()
     setSelectedTab(tabs[0])
-  }, [location.pathname])
+  }, [location.pathname, propTabs])
 
   // Update indicator position
   useEffect(() => {

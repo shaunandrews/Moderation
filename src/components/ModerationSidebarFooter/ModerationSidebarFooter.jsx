@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import styles from './ModerationSidebarFooter.module.css';
 
-const ModerationSidebarFooter = ({ onCancel, onRemove, action = 'remove' }) => {
+const ModerationSidebarFooter = ({ onCancel, onRemove, action = 'remove', isActionButtonDisabled = false }) => {
   return (
     <div className={styles.footer}>
       <div className={styles.buttons}>
@@ -15,6 +15,7 @@ const ModerationSidebarFooter = ({ onCancel, onRemove, action = 'remove' }) => {
           type="danger"
           label={action === 'report' ? 'Report post' : 'Remove post'}
           onClick={onRemove}
+          disabled={isActionButtonDisabled}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import styles from './CommunityHomeMember.module.css';
 import Post from '../Post/Post'
-import Layout from '../Layout/Layout'
+import CommunityLayout from '../CommunityLayout/CommunityLayout'
 
 const mockPosts = [
   {
@@ -81,7 +81,7 @@ const mockPosts = [
 
 export default function CommunityHomeMember() {
   return (
-    <Layout 
+    <CommunityLayout 
       className={styles.content}
       title="Meowing"
       description="A community for cats"
@@ -99,6 +99,6 @@ export default function CommunityHomeMember() {
           content={post.content}
         />
       ))}
-    </Layout>
+    </CommunityLayout>
   );
 } 

@@ -1,4 +1,4 @@
-import styles from './Layout.module.css'
+import styles from './CommunityLayout.module.css'
 import CommunityBanner from '../CommunityBanner/CommunityBanner'
 import CommunityNav from '../CommunityNav/CommunityNav'
 import TabBar from '../TabBar/TabBar'
@@ -6,7 +6,7 @@ import { createContext } from 'react'
 
 export const RoleContext = createContext(null);
 
-export default function Layout({ 
+export default function CommunityLayout({ 
   children, 
   className, 
   showNav = true,

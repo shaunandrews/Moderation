@@ -10,6 +10,7 @@ import AuditLogDetails from './components/AuditLogDetails/AuditLogDetails'
 import ModerationSidebar from './components/ModerationSidebar/ModerationSidebar'
 import CommunityHomeAdmin from './components/CommunityHomeAdmin/CommunityHomeAdmin'
 import CommunityHomeMember from './components/CommunityHomeMember/CommunityHomeMember'
+import Home from './components/Home/Home'
 
 // Create a context for moderation state
 export const ModerationContext = createContext();
@@ -18,12 +19,14 @@ export default function App() {
   const [moderationOpen, setModerationOpen] = useState(false);
   const [moderationDismissCallback, setModerationDismissCallback] = useState(null);
   const [moderationAction, setModerationAction] = useState('remove');
+  const [moderationSource, setModerationSource] = useState('home');
 
   const handleModerationClose = () => {
     setModerationOpen(false);
     // Reset the callback and action when moderation is closed without completion
     setModerationDismissCallback(null);
     setModerationAction('remove');
+    setModerationSource('home');
   };
 
   return (
@@ -34,12 +37,15 @@ export default function App() {
         moderationDismissCallback,
         setModerationDismissCallback,
         moderationAction,
-        setModerationAction
+        setModerationAction,
+        moderationSource,
+        setModerationSource
       }}>
         <div className={styles.app}>
           <Sidebar />
           <TopBar />
           <Routes>
+            <Route path="/home" element={<Home />} />
             <Route path="/" element={<CommunityHomeAdmin />} />
             <Route path="/group-meowing" element={<CommunityHomeMember />} />
             <Route path="/mod-queue" element={<ModQueue />} />
@@ -50,6 +56,7 @@ export default function App() {
             isOpen={moderationOpen}
             onClose={handleModerationClose}
             action={moderationAction}
+            source={moderationSource}
           />
         </div>
       </ModerationContext.Provider>

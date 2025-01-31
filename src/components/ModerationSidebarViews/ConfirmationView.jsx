@@ -3,7 +3,7 @@ import styles from './Views.module.css';
 import Button from '../Button/Button';
 import { ModerationContext } from '../../App';
 
-const ConfirmationView = ({ viewData, onClose, action = 'remove' }) => {
+const ConfirmationView = ({ viewData, onClose, action = 'remove', source = 'home' }) => {
   const { moderationDismissCallback, setModerationDismissCallback } = useContext(ModerationContext);
   const [isBanned, setIsBanned] = useState(false);
 
@@ -113,7 +113,7 @@ const ConfirmationView = ({ viewData, onClose, action = 'remove' }) => {
         {action === 'report' ? (
           <>
             <p>
-              Thank you for reporting this post. Our moderation team will review it for {getReasonText().toLowerCase()}
+              Thank you for reporting this post. {source === 'community' ? 'The community moderation team' : 'Tumblr staff'} will review it for {getReasonText().toLowerCase()}
               {detailText && ` (${detailText.toLowerCase()})`}.
               {viewData.reportReason && (
                 <>
@@ -147,7 +147,7 @@ const ConfirmationView = ({ viewData, onClose, action = 'remove' }) => {
         ) : (
           <>
             <p>
-              The post author has been notified that their post was removed for {getReasonText().toLowerCase()}
+              The post author has been notified that their post was removed by {source === 'community' ? 'the community moderation team' : 'Tumblr staff'} for {getReasonText().toLowerCase()}
               {detailText && ` (${detailText.toLowerCase()})`}.
             </p>
 

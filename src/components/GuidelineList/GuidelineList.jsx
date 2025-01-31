@@ -44,6 +44,15 @@ const GuidelineList = ({ children, value = [], onChange }) => {
       role="group"
       aria-label="Guidelines"
     >
+      {/* 
+       * Maps through each child component and clones it with additional props:
+       * - Preserves all existing props from the child
+       * - Adds a 'selected' prop based on whether the child's value is in the current selection
+       * - Adds an onClick handler that toggles the child's value in the selection array:
+       *   - If already selected, removes it from the array
+       *   - If not selected, adds it to the array
+       * This enables multi-select functionality for the guidelines list
+       */}
       {React.Children.map(children, child => {
         return React.cloneElement(child, {
           ...child.props,

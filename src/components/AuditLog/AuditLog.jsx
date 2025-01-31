@@ -1,5 +1,5 @@
 import styles from './AuditLog.module.css'
-import Layout from '../Layout/Layout'
+import CommunityLayout from '../CommunityLayout/CommunityLayout'
 import AuditLogList from '../AuditLogList/AuditLogList'
 import AuditLogListItem from '../AuditLogListItem/AuditLogListItem'
 
@@ -33,7 +33,7 @@ const mockAuditLogs = [
 
 export default function AuditLog() {
   return (
-    <Layout className={styles.auditLog} role="admin">
+    <CommunityLayout className={styles.auditLog} role="admin">
       <AuditLogList>
         {mockAuditLogs.map((log, index) => (
           <AuditLogListItem
@@ -42,6 +42,6 @@ export default function AuditLog() {
           />
         ))}
       </AuditLogList>
-    </Layout>
+    </CommunityLayout>
   )
 } 

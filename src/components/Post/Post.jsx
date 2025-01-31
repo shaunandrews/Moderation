@@ -4,7 +4,7 @@ import PostHeader from '../PostHeader/PostHeader';
 import PostContent from '../PostContent/PostContent';
 import PostFooter from '../PostFooter/PostFooter';
 import Button from '../Button/Button';
-import { RoleContext } from '../Layout/Layout';
+import { RoleContext } from '../CommunityLayout/CommunityLayout';
 
 const defaultContent = (
   <p>This is a placeholder post content. It would normally contain the actual content of the post.</p>
